@@ -1,0 +1,303 @@
+"use client";
+import authorImage from "@/public/assets/author.png";
+import React, { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { useLoader } from "@react-three/fiber";
+import {
+  MotionValue,
+  useScroll,
+  useTransform,
+  motion as motionDiv,
+} from "framer-motion";
+import { motion } from "framer-motion-3d";
+import ProjectShowcase from "../ProjectShowcase";
+import useWindowDimensions from "../../utils/useWindowDimensions";
+import Image from "next/image";
+type motion = MotionValue<number>;
+
+interface ModelProps {
+  gltfPath: string;
+  rotateX: motion;
+  rotateY: motion;
+  rotateZ: motion;
+  donutPosX: motion;
+  donutPosY: motion;
+  donutPosZ: motion;
+  scale: motion;
+}
+
+const FlyingDonut: React.FC<ModelProps> = ({
+  donutPosX,
+  donutPosY,
+  donutPosZ,
+  rotateX,
+  rotateY,
+  rotateZ,
+  gltfPath,
+  scale,
+}) => {
+  const gltf = useLoader(GLTFLoader, gltfPath);
+
+  return (
+    <motion.primitive
+      object={gltf.scene}
+      scale={scale}
+      rotation-x={rotateX}
+      duration={300}
+      position={[donutPosX, donutPosY, donutPosZ]}
+    />
+  );
+};
+const HeroDonut = ({
+  gltfPath,
+  donut2PosX,
+  donut2PosY,
+  donut2PosZ,
+  scale,
+  rotationX,
+}: {
+  gltfPath: string;
+  donut2PosX: motion;
+  donut2PosY: motion;
+  donut2PosZ: motion;
+  scale: motion;
+  rotationX: motion;
+}) => {
+  const gltf = useLoader(GLTFLoader, gltfPath);
+  const mesh = useRef<any>();
+  useFrame(() => (mesh.current.rotation.y += 0.0009));
+  return (
+    <motion.primitive
+      ref={mesh}
+      object={gltf.scene}
+      scale={scale}
+      rotation-x={rotationX}
+      position={[donut2PosX, donut2PosY, donut2PosZ]}
+    />
+  );
+};
+
+export default function HeroSection({ dictionary }: { dictionary: any }) {
+  //todo typescript
+  const gltfPath = "/assets/untitled5.glb";
+  const gltfPath2 = "/assets/untitled.glb";
+  const mainWrapper = useRef<any>();
+  const { scrollYProgress } = useScroll({
+    target: mainWrapper,
+    offset: ["start end", "end end"],
+  });
+  // const { width } = useWindowDimensions();
+  const scale = useTransform(scrollYProgress, [0.2, 0.6, 1], [0, 1.5, 25]);
+  const rotateX = useTransform(scrollYProgress, [0.1, 0.7, 1], [0, 8, 9.3]);
+  const rotateY = useTransform(scrollYProgress, [0.4, 0.6], [0, 3]);
+  const rotateZ = useTransform(scrollYProgress, [0.4, 0.6, 1], [0, 3, 6]);
+  const donutPosX = useTransform(scrollYProgress, [0.1, 0.3], [0, 0]);
+  const donutPosY = useTransform(scrollYProgress, [0.1, 0.7, 1], [1, 0, -8]);
+  const donutPosZ = useTransform(scrollYProgress, [0.1, 0.5], [1, 2.8]);
+
+  const donut2PosX = useTransform(scrollYProgress, [0.1, 0.3], [0, 0]);
+  const donut2PosY = useTransform(scrollYProgress, [0.1, 0.6], [0, -7]);
+  const donut2PosZ = useTransform(scrollYProgress, [0.1, 0.6], [0, 2]);
+  const donut2RotationX = useTransform(scrollYProgress, [0.1, 0.3], [0, 2]);
+  const donut2Scale = useTransform(scrollYProgress, [0.1, 0.6], [1, 2]);
+
+  const h1TextOpacity = useTransform(
+    scrollYProgress,
+    [0.15, 0.3, 0.65],
+    [0, 1, 0]
+  );
+  const h2TextOpacity = useTransform(
+    scrollYProgress,
+    [0.4, 0.6, 0.7],
+    [0, 1, 0]
+  );
+  const h4TextOpacity = useTransform(
+    scrollYProgress,
+    [0.7, 0.75, 0.85],
+    [0, 1, 0]
+  );
+  const h1TextTranslateX = useTransform(
+    scrollYProgress,
+    [0.1, 0.2, 0.3],
+    ["30vw", "15vw", "0vw"]
+  );
+  const h2TextTranslateX = useTransform(
+    scrollYProgress,
+    [0.4, 0.5, 0.6],
+    ["0vw", "0vw", "0vw"]
+  );
+  const h1TextTranslateY = useTransform(
+    scrollYProgress,
+    [0.1, 0.2, 0.4],
+    ["0vw", "0vw", "0vw"]
+  );
+  const h2TextTranslateY = useTransform(
+    scrollYProgress,
+    [0.35, 0.4, 0.6],
+    ["-25vw", "-15vw", "0vw"]
+  );
+  const h4TextTranslateY = useTransform(
+    scrollYProgress,
+    [0.6, 0.7, 0.9],
+    ["4vw", "0vw", "-4vw"]
+  );
+
+  //children values
+  const menuOpacity = useTransform(scrollYProgress, (pos) =>
+    pos <= 0.9 ? 1 : 0
+  );
+
+  //welcome box values
+  const welcomeBoxOpacity = useTransform(
+    scrollYProgress,
+    [0.1, 0.15, 0.3],
+    [1, 0.5, 0]
+  );
+  const welcomeBoxTranslateX = useTransform(
+    scrollYProgress,
+    [0.1, 0.2, 0.3],
+    ["-50%", "0%", "50%"]
+  );
+  const welcomeBoxTranslateY = useTransform(
+    scrollYProgress,
+    [0.1, 0.2, 0.3],
+    ["-50%", "0%", "50%"]
+  );
+
+  return (
+    <>
+      <motion.div
+        style={{
+          opacity: welcomeBoxOpacity,
+          translateX: welcomeBoxTranslateX,
+          translateY: welcomeBoxTranslateY,
+        }}
+        className="flex items-center justify-center absolute left-0 top-0 w-full h-screen z-[501] rounded-3xl"
+      >
+        <div className="relative bg-white w-[80%] md:w-[30rem] h-[27.5rem] lg:h-[30rem]">
+          <h1 className="lg:overflow-hidden absolute text-3xl sm:text-4xl md:text-[34px] lg:text-5xl -left-6 lg:-left-12 -top-6 lg:-top-16 font-extrabold select-none w-max max-w-[80%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[80%]">
+            <span className="box-decoration-clone bg-yellow-300 px-6 py-2 leading-[1.5] ">
+              {dictionary.HomePage.welcomeText}
+            </span>
+            {/* i18n todo */}
+          </h1>
+          <div className="mt-36 sm:mt-44 md:mt-40 lg:mt-48 px-8">
+            <div className="flex flex-row items-center w-max max-w-full">
+              <div className="flex items-center justify-center rounded-full overflow-hidden w-24 h-24">
+                <Image
+                  src={authorImage}
+                  alt="profile"
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="flex flex-col">
+                <h2 className="text-3xl font-extrabold ml-4">
+                  {dictionary.HomePage.name}
+                </h2>
+                <p className="text-lg font-dosis ml-4">
+                  {dictionary.HomePage.dev}
+                </p>
+              </div>
+            </div>
+            <div className="-mt-2 -left-2 p-4 ml-24 text-lg font-dosis bg-gray-300 relative">
+              <div className="-left-1 -top-1 w-7 h-7 bg-gray-300 absolute rotate-45"></div>
+              <p className="">{dictionary.HomePage.welcomeTextDescription}</p>
+            </div>
+          </div>
+          <div className="flex flex-row items-center pb-3 gap-3 absolute right-3 bottom-0 font-bold px-6 select-none w-max max-w-[80%]">
+            {/* scroll icon */}
+            <div>{dictionary.HomePage.scrollDown}</div>
+            <img
+              src="/scroll-down.gif"
+              alt="scroll down"
+              className="w-10 h-auto"
+            />
+            {/* i18n todo */}
+          </div>
+        </div>
+      </motion.div>
+      <ProjectShowcase dictionary={dictionary} />
+      <motionDiv.div
+        className="absolute left-0 top-0 h-[700vh] w-screen"
+        ref={mainWrapper}
+      >
+        <motionDiv.h2
+          style={{
+            opacity: h1TextOpacity,
+            translateX: h1TextTranslateX,
+            translateY: h1TextTranslateY,
+          }}
+          className="font-bold text-3xl sm:text-5xl lg:text-6xl bottom-36 left-0 fixed z-[500] font-sans w-full"
+        >
+          <div className="bg-yellow-300 p-6 box-decoration-clone select-none w-max max-w-full">
+            {dictionary.HomePage.hi}
+          </div>
+        </motionDiv.h2>
+        <motionDiv.h2
+          style={{
+            opacity: h2TextOpacity,
+            translateX: h2TextTranslateX,
+            translateY: h2TextTranslateY,
+          }}
+          className="text-center font-bold text-3xl sm:text-5xl lg:text-7xl xl:text-8xl bottom-36 left-0 fixed z-[500] font-sans w-full"
+        >
+          <div className="bg-yellow-300 select-none p-6 w-full">
+            {dictionary.HomePage.dev}
+          </div>
+        </motionDiv.h2>
+        <motionDiv.h2
+          style={{
+            opacity: h4TextOpacity,
+            translateY: h4TextTranslateY,
+            translateX: "-50%",
+          }}
+          className="font-bold bottom-36 text-center w-[90%] md:w-[70%] lg:w-[60%] left-1/2 fixed z-[500] font-sans"
+        >
+          <div className="bg-yellow-300 select-none p-6 text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
+            {dictionary.HomePage.h2Text}
+          </div>
+        </motionDiv.h2>
+        <motionDiv.div
+          className="duration-500"
+          style={{ opacity: menuOpacity }}
+        >
+          <Suspense fallback={<div>Loading</div>}>
+            <Canvas
+              style={{
+                zIndex: "10",
+                position: "fixed",
+                top: "50%",
+                transform: "translateY(-50%)",
+                left: "0px",
+                height: "100vh",
+                width: "100vw",
+              }}
+            >
+              <ambientLight />
+              <pointLight position={[3, 3, -5]} />
+              <FlyingDonut
+                scale={scale}
+                donutPosX={donutPosX}
+                donutPosY={donutPosY}
+                donutPosZ={donutPosZ}
+                rotateX={rotateX}
+                rotateY={rotateY}
+                rotateZ={rotateZ}
+                gltfPath={gltfPath}
+              />
+              <HeroDonut
+                donut2PosX={donut2PosX}
+                donut2PosY={donut2PosY}
+                donut2PosZ={donut2PosZ}
+                gltfPath={gltfPath2}
+                scale={donut2Scale}
+                rotationX={donut2RotationX}
+              />
+            </Canvas>
+          </Suspense>
+        </motionDiv.div>
+      </motionDiv.div>
+    </>
+  );
+}
