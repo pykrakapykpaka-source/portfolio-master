@@ -15,6 +15,20 @@ export function NavRight({ dictionary, lang }: { dictionary: any; lang: any }) {
   }, []);
   return (
     <div className="text-white fixed right-6 sm:right-12 bottom-12 sm:bottom-auto sm:top-12 flex flex-row space-x-3 z-[1000] font-regular text-xl font-anta">
+      <Link
+        href="/"
+        className="fixed left-6 lg:left-12 top-6 z-[550] flex flex-col"
+      >
+        <h2 className="italic font-bold text-2xl text-white drop-shadow-md shadow-black">
+          {dictionary.HomePage.firstName}{" "}
+          <span className=" text-yellow-500">
+            {dictionary.HomePage.lastName}
+          </span>
+        </h2>
+        <div className="text-sm font-dosis text-white">
+          {dictionary.HomePage.portfolioText}
+        </div>
+      </Link>
       <ScrollTo
         to="projects"
         smooth={true}

@@ -1,7 +1,7 @@
 {
   "HomePage": {
-    "h2Text": "Poniżej znajdziesz moje ostatnie projekty oraz formularz kontaktowy.",
-    "projectShowcase": "Ostatnie projekty",
+    "h2Text": "Poniżej znajdziesz moje strony internetowe oraz formularz kontaktowy.",
+    "projectShowcase": "Strony internetowe",
     "firstName": "Paweł",
     "lastName": "Wessel",
     "portfolioText": "PORTFOLIO PROGRAMISTY",
@@ -13,47 +13,8 @@
     "welcomeText": "Portfolio stron i aplikacji internetowych",
     "projects": [
       {
-        "name": "Quixy.pl",
-        "shortDescription": "Platforma internetowa z ofertami pracy zdalnej, która połączy klientów z talentami, czyli osobami, które zrealizują wizję klienta.",
-        "images": [
-          "/images/projects/quixy/hero.png",
-          "/images/projects/quixy/why-us.png",
-          "/images/projects/quixy/footer.png",
-          "/images/projects/quixy/register.png",
-          "/images/projects/quixy/dashboard.png",
-          "/images/projects/quixy/quixies.png",
-          "/images/projects/quixy/image-generator.png"
-        ],
-        "link": "https://www.quixy.pl/",
-        "type": "Aplikacja Full-stack",
-        "technologies": [
-          "React",
-          "Next",
-          "Tailwind",
-          "Firebase",
-          "PWA",
-          "ThreeJS",
-          "Stripe",
-          "openai",
-          "redux",
-          "Mikropłatności"
-        ],
-        "colors": ["#126b91", "#14A800", "#27272A"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["light", "light italic", "regular", "bold"]
-          },
-          {
-            "fontName": "Gotham",
-            "variants": ["light", "regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/quixy"
-      },
-      {
-        "name": "Hexon.work",
-        "shortDescription": "Zaawansowany system CRM dla branży energetycznej. Zawiera system reflinków, generowanie i zarządzanie leadami, analitykę, wykresy, asystenta AI i wiele więcej. W trakcie kampanii Google Ads, aplikacja bezproblemowo obsłużyła ponad 10 000 użytkowników.",
+        "name": "Dedykowany CRM",
+        "shortDescription": "Strona internetowa z dedykowanym systemem CRM w branży energetycznej.",
         "images": [
           "/images/projects/hexon/hero.png",
           "/images/projects/hexon/underhero.png",
@@ -62,7 +23,7 @@
           "/images/projects/hexon/prad.png",
           "/images/projects/hexon/aiassistant.png"
         ],
-        "link": "https://www.hexon.work/",
+        "link": "",
         "type": "Aplikacja Full-stack",
         "technologies": [
           "React",
@@ -92,8 +53,24 @@
         "sourceCode": "https://github.com/wesiudev/quixy"
       },
       {
-        "name": "Blackbellart.com",
-        "shortDescription": "Aplikacja internetowa dla artysty. Sklep z obrazami, oferta usług tatuatorskich.",
+        "name": "Naily",
+        "shortDescription": "Platforma internetowa dla stylistek paznokci.",
+        "images": [
+          "/images/projects/naily/hero.png",
+          "/images/projects/naily/.png",
+          "/images/projects/naily/dashboard-hello.png",
+          "/images/projects/naily/dashboard-ready.png"
+        ],
+        "link": "",
+        "type": "",
+        "technologies": [],
+        "colors": [],
+        "fonts": [],
+        "sourceCode": ""
+      },
+      {
+        "name": "Sklep internetowy",
+        "shortDescription": "Sklep internetowy Blackbell Studio.",
         "images": [
           "/images/projects/blackbellart/hero.webp",
           "/images/projects/blackbellart/shop.webp",
@@ -102,8 +79,8 @@
           "/images/projects/blackbellart/tattoos.webp",
           "/images/projects/blackbellart/contact.webp"
         ],
-        "link": "https://www.blackbellart.com/",
-        "type": "Sklep Online",
+        "link": "https://www.blackbellstudio.pl/",
+        "type": "Projekt E-commerce",
         "technologies": [
           "React",
           "TypeScript",
@@ -132,17 +109,18 @@
         ],
         "sourceCode": "https://github.com/wesiudev/art-tattoo"
       },
+
       {
-        "name": "Zaklejki.pl",
-        "shortDescription": "Sklep internetowy z kolekcją ponad 2000 ręcznie wycinanych naklejkami.",
+        "name": "Sklep internetowy",
+        "shortDescription": "Sklep internetowy z naklejkami.",
         "images": [
           "/images/projects/zaklejki/hero.webp",
           "/images/projects/zaklejki/lottery.webp",
           "/images/projects/zaklejki/shop.webp",
           "/images/projects/zaklejki/product.webp"
         ],
-        "link": "https://www.zaklejki.pl/",
-        "type": "Sklep Online",
+        "link": "",
+        "type": "Projekt E-commerce",
         "technologies": ["React", "Next", "Firebase", "Python", "Web Scraping"],
         "colors": ["#F389EC", "#FFFFFF", "#4338CA"],
         "fonts": [
@@ -156,75 +134,9 @@
           }
         ],
         "sourceCode": "https://github.com/wesiudev/zaklejki"
-      },
-      {
-        "name": "Manicuregrudziadz.pl",
-        "shortDescription": "Strona dedykowana usługom manicure, gdzie mozna zarezerwować terminy, i otrzymać rabaty za zapraszanie znajomych. ",
-        "images": [
-          "/images/projects/manicuregrudziadz/hero.webp",
-          "/images/projects/manicuregrudziadz/dashboard.webp",
-          "/images/projects/manicuregrudziadz/rezerwacje.webp"
-        ],
-        "link": "https://www.manicuregrudziadz.pl/",
-        "type": "Front-end z prostą bazą danych",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "Next",
-          "Redux",
-          "Firebase",
-          "Tailwind"
-        ],
-        "colors": ["#3F3F46", "#FACC15", "#4F46E5"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["light", "light italic", "regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/manicuregrudziadz"
-      },
-
-      {
-        "name": "Fryzurykaminska.pl",
-        "shortDescription": "Strona wizytówka z ofertą usług fryzjerskich, kontaktem i portfolio.",
-        "images": [
-          "/images/projects/fryzurykaminska/hero.webp",
-          "/images/projects/fryzurykaminska/offer.webp"
-        ],
-        "link": "https://www.fryzurykaminska.pl/",
-        "type": "Front-end z prostą bazą danych",
-        "technologies": ["React", "Next", "Tailwind"],
-        "colors": ["#22C55E", "#F3F4F6", "#93C5FD"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/fryzury-kaminska"
-      },
-      {
-        "name": "Radcadeluga.pl",
-        "shortDescription": "Strona wizytówka dla kancelarii. Lista usług, kontakt.",
-        "images": [
-          "/images/projects/kancelariadeluga/hero.webp",
-          "/images/projects/kancelariadeluga/offer.webp"
-        ],
-        "link": "https://www.delugakancelaria.pl/",
-        "type": "Front-end z prostą bazą danych",
-        "technologies": ["React", "Next", "Firebase"],
-        "colors": ["#685A50", "#4ADE80", "#D8B4FE"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/kancelaria-artur-deluga"
       }
     ],
-    "colors": "Kolory",
+    "colors": "Szata graficzna",
     "stack": "Technologie",
     "fonts": "Czcionki",
     "source": "Kod źródłowy",

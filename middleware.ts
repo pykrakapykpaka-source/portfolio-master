@@ -20,11 +20,22 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const PUBLIC_FILE =
-    /^\/(public|_next|assets|favicon\.ico|sw\.js|robots\.txt|manifest\.json)/;
+  // Skip locale handling for Next internals, static assets, and any "file-like" path.
+  // This is important for `next/image` because the optimizer fetches `/images/...` internally.
+  const PUBLIC_FILE = /\.(.*)$/;
 
   // Exclude public files and specific paths from locale handling
-  if (PUBLIC_FILE.test(pathname)) {
+  if (
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/assets") ||
+    pathname.startsWith("/images") ||
+    pathname.startsWith("/favicon.ico") ||
+    pathname.startsWith("/sw.js") ||
+    pathname.startsWith("/robots.txt") ||
+    pathname.startsWith("/manifest.json") ||
+    PUBLIC_FILE.test(pathname)
+  ) {
     return;
   }
 
@@ -40,13 +51,13 @@ export function middleware(request: NextRequest) {
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
     return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url)
+      new URL(`/${locale}${pathname}`, request.url)
     );
   }
 }
 
 export const config = {
   matcher: [
-    "/((?!api|scroll-down.gif|_next/static|_next/public/assets|_ipx|_next/_ipx|_ipx/w_640,q_75|_next/_ipx/w_640,q_75|_next/image|assets|favicon.ico|sw.js).*)",
+    "/((?!api|scroll-down.gif|_next/static|_next/public/assets|_next/image|_ipx|_next/_ipx|_ipx/w_640,q_75|_next/_ipx/w_640,q_75|assets|images|favicon.ico|sw.js|robots.txt|manifest.json|.*\\..*).*)",
   ],
 };

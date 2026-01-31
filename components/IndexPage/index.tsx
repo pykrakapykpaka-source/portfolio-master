@@ -28,20 +28,6 @@ export default function IndexPage({ dictionary }: { dictionary: any }) {
       style={{ background }}
       className="relative duration-500"
     >
-      <Link
-        href="/"
-        className="fixed left-6 lg:left-12 top-12 z-[550] flex flex-col"
-      >
-        <h2 className="italic font-bold text-2xl text-white drop-shadow-md shadow-black">
-          {dictionary.HomePage.firstName}{" "}
-          <span className=" text-yellow-500">
-            {dictionary.HomePage.lastName}
-          </span>
-        </h2>
-        <div className="text-sm font-dosis text-white">
-          {dictionary.HomePage.portfolioText}
-        </div>
-      </Link>
       <div className="relative h-screen w-screen">
         <div className="fixed top-0 left-0 w-screen h-screen bg-gradient-to-br from-black via-zinc-800 to-black scale-150"></div>
         <StarsBg />

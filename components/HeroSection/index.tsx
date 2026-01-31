@@ -14,6 +14,7 @@ import { motion } from "framer-motion-3d";
 import ProjectShowcase from "../ProjectShowcase";
 import useWindowDimensions from "../../utils/useWindowDimensions";
 import Image from "next/image";
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 type motion = MotionValue<number>;
 
 interface ModelProps {
@@ -184,7 +185,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
           </h1>
           <div className="mt-36 sm:mt-44 md:mt-40 lg:mt-48 px-8">
             <div className="flex flex-row items-center w-max max-w-full">
-              <div className="flex items-center justify-center rounded-full overflow-hidden w-24 h-24">
+              <div className="flex items-center justify-center rounded-full overflow-hidden w-16 sm:w-24 h-16 sm:h-24">
                 <Image
                   src={authorImage}
                   alt="profile"
@@ -192,7 +193,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                 />
               </div>
               <div className="flex flex-col">
-                <h2 className="text-3xl font-extrabold ml-4">
+                <h2 className="text-xl sm:text-3xl font-extrabold ml-4">
                   {dictionary.HomePage.name}
                 </h2>
                 <p className="text-lg font-dosis ml-4">
@@ -200,8 +201,11 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                 </p>
               </div>
             </div>
-            <div className="-mt-2 -left-2 p-4 ml-24 text-lg font-dosis bg-gray-300 relative">
-              <div className="-left-1 -top-1 w-7 h-7 bg-gray-300 absolute rotate-45"></div>
+            <div className="p-4 sm:ml-24 text-lg font-dosis bg-gray-300 relative">
+              <div className="left-4 -top-1 text-gray-500 absolute z-[1000]">
+                <FaQuoteLeft className="w-5 h-5" />
+              </div>
+
               <p className="">{dictionary.HomePage.welcomeTextDescription}</p>
             </div>
           </div>

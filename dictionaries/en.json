@@ -1,59 +1,17 @@
 {
   "HomePage": {
-    "h2Text": "Below you will find my latest projects and a contact form.",
-    "projectShowcase": "Latest projects",
-    "hi": "I develop professional web solutions",
+    "h2Text": "Below you will find my websites and a contact form.",
+    "projectShowcase": "Websites",
+    "hi": "I develop professional websites",
     "welcomeTextDescription": "Websites built with technologies fresher than a batch of fresh donuts.",
     "firstName": "Pawel",
     "lastName": "Wessel",
     "scrollDown": "Scroll down",
     "name": "Pawel Wessel",
-    "portfolioText": "DEVELOPER PORTFOLIO",
+    "portfolioText": "PROGRAMMER PORTFOLIO",
     "dev": "Creative Developer",
     "welcomeText": "Portfolio of websites and web-apps",
     "projects": [
-      {
-        "name": "Quixy.pl",
-        "shortDescription": "An online platform with remote job listings that connects clients with talents—individuals who will bring the client's vision to life.",
-        "images": [
-          "/images/projects/quixy/hero.png",
-          "/images/projects/quixy/why-us.png",
-          "/images/projects/quixy/footer.png",
-          "/images/projects/quixy/register.png",
-          "/images/projects/quixy/dashboard.png",
-          "/images/projects/quixy/quixies.png",
-          "/images/projects/quixy/image-generator.png"
-        ],
-        "link": "https://www.quixy.pl/",
-        "type": "Aplikacja Full-stack",
-        "technologies": [
-          "React",
-          "Next",
-          "Tailwind",
-          "Firebase",
-          "PWA",
-          "ThreeJS",
-          "Stripe",
-          "openai",
-          "Mikropłatności"
-        ],
-        "colors": ["#126b91", "#14A800", "#27272A"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["light", "light italic", "regular", "bold"]
-          },
-          {
-            "fontName": "Gotham",
-            "variants": ["light", "regular", "bold"]
-          },
-          {
-            "fontName": "Cardo",
-            "variants": ["regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/quixy"
-      },
       {
         "name": "Hexon.work",
         "shortDescription": "Advanced CRM system for the energy industry. Includes reflink system, lead generation and management, analytics, charts, AI assistant and more. During the Google Ads campaign, the app smoothly handled over 10 000 users.",
