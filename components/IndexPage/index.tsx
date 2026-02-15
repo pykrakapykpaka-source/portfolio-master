@@ -4,7 +4,6 @@ import AOS from "aos";
 import HeroSection from "@/components/HeroSection";
 import { motion, useScroll, useTransform } from "framer-motion";
 import StarsBg from "@/components/StarsBg";
-import Link from "next/link";
 export default function IndexPage({ dictionary }: { dictionary: any }) {
   useEffect(() => {
     AOS.init({

@@ -1,5 +1,6 @@
 {
   "HomePage": {
+    "welcomeText": "Tworzę strony i aplikacje internetowe",
     "h2Text": "Poniżej znajdziesz moje strony internetowe oraz formularz kontaktowy.",
     "projectShowcase": "Strony internetowe",
     "firstName": "Paweł",
@@ -10,10 +11,99 @@
     "hi": "Zamów profesjonalną stronę WWW i reklamę internetową.",
     "welcomeTextDescription": "Strony internetowe tworzone technologiami świeższymi od pączków w tłusty czwartek.",
     "dev": "Kreatywny Developer",
-    "welcomeText": "Portfolio stron i aplikacji internetowych",
+    "visitWebsite": "Odwiedź stronę",
+    "contact": "Formularz kontaktowy",
+    "contactDescription": "Zamów darmową wycenę strony internetowej",
+    "contactNamePlaceholder": "Imię",
+    "contactEmailPlaceholder": "E-mail",
+    "contactMessagePlaceholder": "Wiadomość",
+    "contactSend": "Wyślij wiadomość",
+    "contactSending": "Wysyłanie…",
+    "contactSuccess": "Dzięki! Wiadomość została wysłana.",
+    "contactErrorGeneric": "Coś poszło nie tak. Spróbuj ponownie.",
+    "contactErrorMissingFields": "Uzupełnij wszystkie pola.",
+    "contactErrorInvalidEmail": "Podaj poprawny adres e-mail.",
     "projects": [
       {
-        "name": "Dedykowany CRM",
+        "name": "Naily",
+        "shortDescription": "Strona internetowa dla stylistek paznokci.",
+        "images": [
+          "/images/projects/naily/hero.png",
+          "/images/projects/naily/how-it-works.png",
+          "/images/projects/naily/dashboard-hello.png",
+          "/images/projects/naily/dashboard-ready.png"
+        ],
+        "link": "https://naily.pl",
+        "type": "Aplikacja Full-stack",
+        "technologies": [
+          "React",
+          "Next",
+          "Tailwind",
+          "TypeScript",
+          "Firebase",
+          "Redux",
+          "openai",
+          "moment.js"
+        ],
+        "colors": ["#2463EB", "#CDED52", "#C084FC"],
+        "fonts": [
+          {
+            "fontName": "Baloo",
+            "variants": ["bold"]
+          },
+          {
+            "fontName": "Poppins",
+            "variants": ["light", "regular"]
+          },
+          {
+            "fontName": "Inter",
+            "variants": ["regular", "bold"]
+          }
+        ],
+        "sourceCode": ""
+      },
+      {
+        "name": "Blackbell Studio",
+        "shortDescription": "Sklep internetowy z pracami artystycznymi Blackbell Studio.",
+        "images": [
+          "/images/projects/blackbellart/hero.png",
+          "/images/projects/blackbellart/products.png",
+          "/images/projects/blackbellart/products2.png",
+          "/images/projects/blackbellart/cart.png",
+          "/images/projects/blackbellart/footer.png"
+        ],
+        "link": "https://www.blackbellstudio.pl/",
+        "type": "Projekt E-commerce",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Next",
+          "Redux",
+          "Stripe",
+          "Firebase",
+          "Tailwind",
+          "ThreeJS",
+          "PWA"
+        ],
+        "colors": ["#252326", "#8F26F3", "#22C55E"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["regular", "bold", "light", "italic"]
+          },
+          {
+            "fontName": "Gilroy",
+            "variants": ["regular"]
+          },
+          {
+            "fontName": "GraublauWeb",
+            "variants": ["regular", "bold"]
+          }
+        ],
+        "sourceCode": "https://github.com/wesiudev/art-tattoo"
+      },
+      {
+        "name": "Hexon.work",
         "shortDescription": "Strona internetowa z dedykowanym systemem CRM w branży energetycznej.",
         "images": [
           "/images/projects/hexon/hero.png",
@@ -53,65 +143,7 @@
         "sourceCode": "https://github.com/wesiudev/quixy"
       },
       {
-        "name": "Naily",
-        "shortDescription": "Platforma internetowa dla stylistek paznokci.",
-        "images": [
-          "/images/projects/naily/hero.png",
-          "/images/projects/naily/.png",
-          "/images/projects/naily/dashboard-hello.png",
-          "/images/projects/naily/dashboard-ready.png"
-        ],
-        "link": "",
-        "type": "",
-        "technologies": [],
-        "colors": [],
-        "fonts": [],
-        "sourceCode": ""
-      },
-      {
-        "name": "Sklep internetowy",
-        "shortDescription": "Sklep internetowy Blackbell Studio.",
-        "images": [
-          "/images/projects/blackbellart/hero.webp",
-          "/images/projects/blackbellart/shop.webp",
-          "/images/projects/blackbellart/shopItem.webp",
-          "/images/projects/blackbellart/tattooBlog.webp",
-          "/images/projects/blackbellart/tattoos.webp",
-          "/images/projects/blackbellart/contact.webp"
-        ],
-        "link": "https://www.blackbellstudio.pl/",
-        "type": "Projekt E-commerce",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "Next",
-          "Redux",
-          "Stripe",
-          "Firebase",
-          "Tailwind",
-          "ThreeJS",
-          "PWA"
-        ],
-        "colors": ["#252326", "#8F26F3", "#22C55E"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["regular", "bold", "light", "italic"]
-          },
-          {
-            "fontName": "Gilroy",
-            "variants": ["regular"]
-          },
-          {
-            "fontName": "GraublauWeb",
-            "variants": ["regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/art-tattoo"
-      },
-
-      {
-        "name": "Sklep internetowy",
+        "name": "Zaklejki.pl",
         "shortDescription": "Sklep internetowy z naklejkami.",
         "images": [
           "/images/projects/zaklejki/hero.webp",
@@ -121,7 +153,7 @@
         ],
         "link": "",
         "type": "Projekt E-commerce",
-        "technologies": ["React", "Next", "Firebase", "Python", "Web Scraping"],
+        "technologies": ["React", "Next", "Firebase"],
         "colors": ["#F389EC", "#FFFFFF", "#4338CA"],
         "fonts": [
           {

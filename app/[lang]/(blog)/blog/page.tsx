@@ -2,7 +2,7 @@ import { Post } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
 import StarsBg from "@/components/StarsBg";
-import Footer from "@/components/Footer";
+import Footer from "@/components/ContactSection";
 
 // async function getPost(url: string, blogType?: string) {
 //   const res = await fetch(

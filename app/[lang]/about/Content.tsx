@@ -7,7 +7,7 @@ import { RiComputerLine } from "react-icons/ri";
 import { FaComputerMouse } from "react-icons/fa6";
 import { LiaRocketSolid } from "react-icons/lia";
 import Link from "next/link";
-import Footer from "@/components/Footer";
+import Footer from "@/components/ContactSection";
 export default function Content({
   dictionary,
   lang,

@@ -3,7 +3,7 @@ import { useScroll, useTransform, motion as motionDiv } from "framer-motion";
 import Link from "next/link";
 import { FaCode, FaEnvelope, FaLink, FaPhone } from "react-icons/fa";
 import ProjectImages from "./ProjectImages";
-import Footer from "../Footer";
+import ContactSection from "../ContactSection";
 export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
   const mainWrapper = useRef<any>();
   const { scrollYProgress } = useScroll({
@@ -45,7 +45,7 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
           {dictionary.HomePage.projects.map((item: any, i: any) => (
             <div
               key={i}
-              className="w-full max-w-[766px] relative h-max py-3 lg:py-24 my-12 lg:my-0 flex items-center duration-75 px-6 lg:px-12"
+              className="w-full max-w-[1024px] relative h-max py-3 lg:py-24 my-12 lg:my-0 flex items-center duration-75 px-6 lg:px-12"
             >
               <div className="w-full grid grid-cols-1 gap-3 h-max">
                 <ProjectImages images={item.images} />
@@ -65,6 +65,18 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
                     <p className="text-lg font-dosis">
                       {item.shortDescription}
                     </p>{" "}
+                    {item.link && (
+                      <Link
+                        href={item.link}
+                        target="_blank"
+                        className="mt-3 flex flex-row items-center"
+                      >
+                        <div className="block w-3 h-3 animate-pulse bg-green-500 rounded-full"></div>
+                        <span className="text-white text-lg block ml-2">
+                          {item.link}
+                        </span>
+                      </Link>
+                    )}
                     <h2 className="shadow-sm shadow-black -ml-3 px-3 bg-yellow-300 rounded-br-2xl w-max text-zinc-800 font-anta text-lg lg:text-xl xl:text-2xl mt-3 lg:mt-1.5 xl:mt-3">
                       {dictionary.HomePage.stack}
                     </h2>
@@ -122,7 +134,7 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
             </div>
           ))}
         </div>{" "}
-        <Footer />
+        <ContactSection dictionary={dictionary} />
       </div>
     </>
   );

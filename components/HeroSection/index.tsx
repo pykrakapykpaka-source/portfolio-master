@@ -201,7 +201,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                 </p>
               </div>
             </div>
-            <div className="p-4 sm:ml-24 text-lg font-dosis bg-gray-300 relative">
+            <div className="mt-4 p-4 sm:ml-24 text-lg font-dosis bg-gray-300 relative">
               <div className="left-4 -top-1 text-gray-500 absolute z-[1000]">
                 <FaQuoteLeft className="w-5 h-5" />
               </div>
@@ -278,8 +278,11 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                 width: "100vw",
               }}
             >
-              <ambientLight />
-              <pointLight position={[3, 3, -5]} />
+              {/* Brighter, more balanced lighting */}
+              <ambientLight intensity={1.25} />
+              <pointLight position={[3, 3, -5]} intensity={2.2} />
+              <directionalLight position={[6, 8, 2]} intensity={1.4} />
+              <directionalLight position={[-6, 2, -2]} intensity={0.6} />
               <FlyingDonut
                 scale={scale}
                 donutPosX={donutPosX}

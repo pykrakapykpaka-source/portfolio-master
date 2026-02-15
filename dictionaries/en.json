@@ -11,50 +11,60 @@
     "portfolioText": "PROGRAMMER PORTFOLIO",
     "dev": "Creative Developer",
     "welcomeText": "Portfolio of websites and web-apps",
+    "visitWebsite": "Visit website",
+    "contact": "Contact form",
+    "contactDescription": "Order a free website estimate",
+    "contactNamePlaceholder": "Name",
+    "contactEmailPlaceholder": "Email",
+    "contactMessagePlaceholder": "Message",
+    "contactSend": "Send message",
+    "contactSending": "Sending…",
+    "contactSuccess": "Thanks! Your message has been sent.",
+    "contactErrorGeneric": "Something went wrong. Please try again.",
+    "contactErrorMissingFields": "Please fill in all fields.",
+    "contactErrorInvalidEmail": "Please provide a valid email address.",
     "projects": [
       {
-        "name": "Hexon.work",
-        "shortDescription": "Advanced CRM system for the energy industry. Includes reflink system, lead generation and management, analytics, charts, AI assistant and more. During the Google Ads campaign, the app smoothly handled over 10 000 users.",
+        "name": "Naily",
+        "shortDescription": "Website for nail stylists.",
         "images": [
-          "/images/projects/hexon/hero.png",
-          "/images/projects/hexon/underhero.png",
-          "/images/projects/hexon/opinions-map.png",
-          "/images/projects/hexon/dofinansowanie.png",
-          "/images/projects/hexon/prad.png",
-          "/images/projects/hexon/aiassistant.png"
+          "/images/projects/naily/hero.png",
+          "/images/projects/naily/how-it-works.png",
+          "/images/projects/naily/dashboard-hello.png",
+          "/images/projects/naily/dashboard-ready.png"
         ],
-        "link": "https://www.hexon.work/",
-        "type": "Aplikacja Full-stack",
+        "link": "https://naily.pl",
+        "type": "Full-stack Application",
         "technologies": [
           "React",
           "Next",
           "Tailwind",
-          "CSS",
+          "TypeScript",
           "Firebase",
-          "PWA",
-          "ThreeJS",
-          "openai",
-          "CRM",
-          "Chart.js",
           "Redux",
+          "openai",
           "moment.js"
         ],
-        "colors": ["#AFFC31", "#06B6D4", "#27272A"],
+        "colors": ["#2463EB", "#CDED52", "#C084FC"],
         "fonts": [
           {
-            "fontName": "CocoSharp",
-            "variants": ["light", "light italic", "regular", "bold"]
+            "fontName": "Baloo",
+            "variants": ["bold"]
           },
           {
-            "fontName": "Gotham",
-            "variants": ["light", "regular", "bold"]
+            "fontName": "Poppins",
+            "variants": ["light", "regular"]
+          },
+          {
+            "fontName": "Inter",
+            "variants": ["regular", "bold"]
           }
         ],
-        "sourceCode": "https://github.com/wesiudev/quixy"
+        "sourceCode": ""
       },
       {
-        "name": "Blackbellart.com",
-        "shortDescription": "Web application for an artist. Shop with artworks, tattoo offer.",
+        "name": "Blackbell Studio",
+        "shortDescription": "Online shop with artworks from Blackbell Studio.",
         "images": [
           "/images/projects/blackbellart/hero.webp",
           "/images/projects/blackbellart/shop.webp",
@@ -63,8 +73,8 @@
           "/images/projects/blackbellart/tattoos.webp",
           "/images/projects/blackbellart/contact.webp"
         ],
-        "link": "https://www.blackbellart.com/",
-        "type": "Online Shop",
+        "link": "https://www.blackbellstudio.pl/",
+        "type": "E-commerce Project",
         "technologies": [
           "React",
           "TypeScript",
@@ -94,16 +104,56 @@
         "sourceCode": "https://github.com/wesiudev/art-tattoo"
       },
       {
+        "name": "Hexon.work",
+        "shortDescription": "Website with a dedicated CRM system for the energy industry.",
+        "images": [
+          "/images/projects/hexon/hero.png",
+          "/images/projects/hexon/underhero.png",
+          "/images/projects/hexon/opinions-map.png",
+          "/images/projects/hexon/dofinansowanie.png",
+          "/images/projects/hexon/prad.png",
+          "/images/projects/hexon/aiassistant.png"
+        ],
+        "link": "",
+        "type": "Full-stack Application",
+        "technologies": [
+          "React",
+          "Next",
+          "Tailwind",
+          "CSS",
+          "Firebase",
+          "PWA",
+          "ThreeJS",
+          "openai",
+          "CRM",
+          "Chart.js",
+          "Redux",
+          "moment.js"
+        ],
+        "colors": ["#AFFC31", "#06B6D4", "#27272A"],
+        "fonts": [
+          {
+            "fontName": "CocoSharp",
+            "variants": ["light", "light italic", "regular", "bold"]
+          },
+          {
+            "fontName": "Gotham",
+            "variants": ["light", "regular", "bold"]
+          }
+        ],
+        "sourceCode": ""
+      },
+      {
         "name": "Zaklejki.pl",
-        "shortDescription": "Online shop with a collection of over 2000 hand-made stickers.",
+        "shortDescription": "Online shop with stickers.",
         "images": [
           "/images/projects/zaklejki/hero.webp",
           "/images/projects/zaklejki/lottery.webp",
           "/images/projects/zaklejki/shop.webp",
           "/images/projects/zaklejki/product.webp"
         ],
-        "link": "https://www.zaklejki.pl/",
-        "type": "Online Shop",
+        "link": "",
+        "type": "E-commerce Project",
         "technologies": ["React", "Next", "Firebase", "Python", "Web Scraping"],
         "colors": ["#F389EC", "#FFFFFF", "#4338CA"],
         "fonts": [
@@ -116,73 +166,7 @@
             "variants": ["bold"]
           }
         ],
-        "sourceCode": "https://github.com/wesiudev/zaklejki"
-      },
-      {
-        "name": "Manicuregrudziadz.pl",
-        "shortDescription": "Website dedicated to manicure services, where you can book appointments, and earn discounts by referring friends.",
-        "images": [
-          "/images/projects/manicuregrudziadz/hero.webp",
-          "/images/projects/manicuregrudziadz/dashboard.webp",
-          "/images/projects/manicuregrudziadz/rezerwacje.webp"
-        ],
-        "link": "https://www.manicuregrudziadz.pl/",
-        "type": "Front-end with a simple database",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "Next",
-          "Redux",
-          "Firebase",
-          "Tailwind"
-        ],
-        "colors": ["#3F3F46", "#FACC15", "#4F46E5"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["light", "light italic", "regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/manicuregrudziadz"
-      },
-
-      {
-        "name": "Fryzurykaminska.pl",
-        "shortDescription": "Business card website for a hairdresser. Portfolio, services, contact.",
-        "images": [
-          "/images/projects/fryzurykaminska/hero.webp",
-          "/images/projects/fryzurykaminska/offer.webp"
-        ],
-        "link": "https://www.fryzurykaminska.pl/",
-        "type": "Front-end with a simple database",
-        "technologies": ["React", "Next", "Tailwind"],
-        "colors": ["#22C55E", "#F3F4F6", "#93C5FD"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/fryzury-kaminska"
-      },
-      {
-        "name": "Radcadeluga.pl",
-        "shortDescription": "Business card website for a legal advisor. Contact, Services.",
-        "images": [
-          "/images/projects/kancelariadeluga/hero.webp",
-          "/images/projects/kancelariadeluga/offer.webp"
-        ],
-        "link": "https://www.delugakancelaria.pl/",
-        "type": "Front-end with a simple database",
-        "technologies": ["React", "Next", "Firebase", "Tailwind"],
-        "colors": ["#685A50", "#4ADE80", "#D8B4FE"],
-        "fonts": [
-          {
-            "fontName": "CocoSharp",
-            "variants": ["regular", "bold"]
-          }
-        ],
-        "sourceCode": "https://github.com/wesiudev/kancelaria-artur-deluga"
+        "sourceCode": ""
       }
     ],
     "colors": "Colors",
