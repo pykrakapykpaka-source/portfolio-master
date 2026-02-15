@@ -134,7 +134,9 @@ export default function ProjectShowcase({ dictionary }: { dictionary: any }) {
             </div>
           ))}
         </div>{" "}
-        <ContactSection dictionary={dictionary} />
+        <div className="w-full flex items-center justify-center">
+          <ContactSection dictionary={dictionary} />
+        </div>
       </div>
     </>
   );

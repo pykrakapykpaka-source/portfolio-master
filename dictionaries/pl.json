@@ -12,10 +12,10 @@
     "welcomeTextDescription": "Strony internetowe tworzone technologiami świeższymi od pączków w tłusty czwartek.",
     "dev": "Kreatywny Developer",
     "visitWebsite": "Odwiedź stronę",
-    "contact": "Formularz kontaktowy",
-    "contactDescription": "Zamów darmową wycenę strony internetowej",
+    "contact": "Masz pomysł na stronę internetową?",
+    "contactDescription": "Zamów darmową wycenę, wypełniając formularz poniżej",
     "contactNamePlaceholder": "Imię",
-    "contactEmailPlaceholder": "E-mail",
+    "contactPhoneNumberPlaceholder": "Numer telefonu",
     "contactMessagePlaceholder": "Wiadomość",
     "contactSend": "Wyślij wiadomość",
     "contactSending": "Wysyłanie…",
@@ -23,6 +23,7 @@
     "contactErrorGeneric": "Coś poszło nie tak. Spróbuj ponownie.",
     "contactErrorMissingFields": "Uzupełnij wszystkie pola.",
     "contactErrorInvalidEmail": "Podaj poprawny adres e-mail.",
+    "contactErrorInvalidPhoneNumber": "Podaj poprawny 9-cyfrowy numer telefonu (np. 721 417 154).",
     "projects": [
       {
         "name": "Naily",

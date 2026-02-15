@@ -10,10 +10,12 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
     "idle" | "sending" | "success" | "error"
   >("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
 
   const t = {
     namePlaceholder: dictionary?.HomePage?.contactNamePlaceholder ?? "Name",
-    emailPlaceholder: dictionary?.HomePage?.contactEmailPlaceholder ?? "Email",
+    phoneNumberPlaceholder:
+      dictionary?.HomePage?.contactPhoneNumberPlaceholder ?? "Phone number",
     messagePlaceholder:
       dictionary?.HomePage?.contactMessagePlaceholder ?? "Message",
     send: dictionary?.HomePage?.contactSend ?? "Send message",
@@ -27,13 +29,26 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
     errorMissing:
       dictionary?.HomePage?.contactErrorMissingFields ??
       "Please fill in all fields.",
-    errorInvalidEmail:
-      dictionary?.HomePage?.contactErrorInvalidEmail ??
-      "Please provide a valid email address.",
+    errorInvalidPhoneNumber:
+      dictionary?.HomePage?.contactErrorInvalidPhoneNumber ??
+      "Please provide a valid phone number.",
   };
 
-  const isValidEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  /** Normalize to 9 digits: strip non-digits, optionally remove leading 48 (Polish country code). */
+  const normalizePhoneNumber = (raw: string): string => {
+    const digits = raw.replace(/\D/g, "");
+    if (digits.length === 11 && digits.startsWith("48")) return digits.slice(2);
+    return digits;
+  };
+
+  const isValidPhoneNumber = (raw: string): boolean => {
+    const normalized = normalizePhoneNumber(raw);
+    return /^[0-9]{9}$/.test(normalized);
+  };
+
+  const phoneDigitCount = normalizePhoneNumber(phoneValue).length;
+  const phoneValid = isValidPhoneNumber(phoneValue);
+  const phoneTouched = phoneValue.length > 0;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,45 +60,47 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const name = String(formData.get("name") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
+    const rawPhone = String(formData.get("phoneNumber") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
     const website = String(formData.get("website") ?? "").trim(); // honeypot
 
-    if (!name || !email || !message) {
+    if (!name || !rawPhone || !message) {
       setStatus("error");
       setStatusMessage(t.errorMissing);
       return;
     }
-    if (!isValidEmail(email)) {
+    if (!isValidPhoneNumber(rawPhone)) {
       setStatus("error");
-      setStatusMessage(t.errorInvalidEmail);
+      setStatusMessage(t.errorInvalidPhoneNumber);
       return;
     }
+    const phoneNumber = normalizePhoneNumber(rawPhone);
 
-    const response = await sendEmail(name, email, message, website);
+    const response = await saveToFirestore(name, phoneNumber, message, website);
     if (response.success) {
       setStatus("success");
       setStatusMessage(t.success);
       form.reset();
+      setPhoneValue("");
     } else {
       setStatus("error");
       setStatusMessage(response.message || t.errorGeneric);
     }
   };
 
-  const sendEmail = async (
+  const saveToFirestore = async (
     name: string,
-    email: string,
+    phoneNumber: string,
     message: string,
     website: string
   ) => {
     try {
-      const response = await fetch("/api/sendEmail", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, message, website }),
+        body: JSON.stringify({ name, phoneNumber, message, website }),
       });
       const data = await response.json().catch(() => null);
       if (response.ok && data?.success) return { success: true, message: "" };
@@ -97,9 +114,9 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
     }
   };
   return (
-    <div className="font-dosis rounded-t-3xl mx-4 lg:mx-12 px-4 bg-black/75 pt-4 lg:pt-12 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
-      <div className="max-w-[768px] font-cocosharp bg-slate-800 w-full rounded-xl p-4 lg:p-6">
-        <h2 className="text-2xl font-bold text-white">
+    <div className="font-dosis lg:mx-12 max-w-[90%] lg:max-w-[1024px] bg-black/75 pt-0 border-t-2 border-yellow-300 pb-36 lg:pb-12 text-xl flex flex-col items-center justify-center z-[600] relative">
+      <div className="font-cocosharp bg-slate-800 w-full p-4 lg:p-6">
+        <h2 className="text-2xl font-bold text-yellow-300">
           {dictionary?.HomePage?.contact}
         </h2>
         <p className="text-sm text-white">
@@ -125,17 +142,30 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-sm text-white" htmlFor="contact-email">
-                  {t.emailPlaceholder}
+                <label className="text-sm text-white" htmlFor="contact-phone">
+                  {t.phoneNumberPlaceholder}
                 </label>
                 <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  placeholder={t.emailPlaceholder}
-                  autoComplete="email"
+                  id="contact-phone"
+                  name="phoneNumber"
+                  type="tel"
+                  value={phoneValue}
+                  onChange={(e) => setPhoneValue(e.target.value)}
+                  placeholder={t.phoneNumberPlaceholder}
+                  autoComplete="tel"
                   required
-                  className="w-full rounded-lg border border-black/15 bg-white px-3 py-2 text-base text-black outline-none focus:border-black/40 focus:ring-2 focus:ring-black/10"
+                  inputMode="numeric"
+                  aria-invalid={phoneTouched && !phoneValid}
+                  aria-describedby={
+                    phoneTouched ? "contact-phone-hint" : undefined
+                  }
+                  className={`w-full rounded-lg border bg-white px-3 py-2 text-base text-black outline-none focus:ring-2 ${
+                    !phoneTouched
+                      ? "border-black/15 focus:border-black/40 focus:ring-black/10"
+                      : phoneValid
+                      ? "border-green-500/60 focus:border-green-500 focus:ring-green-500/20"
+                      : "border-red-500/60 focus:border-red-500 focus:ring-red-500/20"
+                  }`}
                 />
               </div>
             </div>
@@ -167,7 +197,7 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-black px-4 py-3 text-base font-medium text-white disabled:opacity-60 md:w-max"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-black px-4 py-3 text-base font-medium text-white shadow-[0_0_12px_rgba(253,224,71,0.35)] transition-all duration-200 hover:shadow-[0_0_20px_rgba(253,224,71,0.5)] hover:brightness-110 disabled:opacity-60 disabled:hover:brightness-100 disabled:hover:shadow-[0_0_12px_rgba(253,224,71,0.35)] md:w-max"
           >
             <FaPaperPlane className="h-5 w-5" />
             <span>{status === "sending" ? t.sending : t.send}</span>
@@ -196,16 +226,17 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
           className="px-4 lg:px-0 max-w-[500px]"
         />
       </div>
-      <div className="h-max w-max mt-12">
-        <span className="font-light text-white italic">
-          wesselpawel.com 2026
-        </span>
-        <div className="gap-4 mt-4 flex flex-row items-center w-full justify-evenly text-white">
-          <Link title="Send me an email" href="mailto:wesiudev@gmail.com">
-            <FaEnvelope className="opacity-50 h-8 w-8" />
-          </Link>
+      <div className="h-max px-4 mt-12 flex flex-row items-center justify-between w-full">
+        <div className="flex flex-col">
+          <span className="font-light text-white/60">wesselpawel.com </span>
+          <span className="font-light text-white/60">2026</span>
+        </div>
+        <div className="mt-4 flex flex-col w-full items-end justify-end text-white/60">
           <Link title="Call me" href="tel:+48721417154">
-            <FaPhone className="opacity-50 h-8 w-8" />
+            +48 721 417 154
+          </Link>
+          <Link title="Send me an email" href="mailto:wesiudev@gmail.com">
+            <FaEnvelope className="h-8 w-8" />
           </Link>
         </div>
       </div>

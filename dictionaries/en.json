@@ -12,10 +12,10 @@
     "dev": "Creative Developer",
     "welcomeText": "Portfolio of websites and web-apps",
     "visitWebsite": "Visit website",
-    "contact": "Contact form",
-    "contactDescription": "Order a free website estimate",
+    "contact": "Let's realize your website idea",
+    "contactDescription": "Order a free estimate by filling out the form below",
     "contactNamePlaceholder": "Name",
-    "contactEmailPlaceholder": "Email",
+    "contactPhoneNumberPlaceholder": "Phone number",
     "contactMessagePlaceholder": "Message",
     "contactSend": "Send message",
     "contactSending": "Sending…",
@@ -23,6 +23,7 @@
     "contactErrorGeneric": "Something went wrong. Please try again.",
     "contactErrorMissingFields": "Please fill in all fields.",
     "contactErrorInvalidEmail": "Please provide a valid email address.",
+    "contactErrorInvalidPhoneNumber": "Please provide a valid 9-digit phone number (e.g. 721 417 154).",
     "projects": [
       {
         "name": "Naily",
