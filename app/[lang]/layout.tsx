@@ -34,7 +34,7 @@ export async function generateMetadata({
       siteName: meta.siteName,
       images: [
         {
-          url: "/assets/pinkdonut.png",
+          url: "https://wesselpawel.netlify.app/assets/pinkdonut.png",
           type: "image/png",
         },
       ],
@@ -43,7 +43,12 @@ export async function generateMetadata({
       site: "@wesiudev",
       title: meta.home.title,
       description: meta.home.description,
-      images: [{ url: "/assets/pinkdonut.png", type: "image/png" }],
+      images: [
+        {
+          url: "https://wesselpawel.netlify.app/assets/pinkdonut.png",
+          type: "image/png",
+        },
+      ],
     },
   };
 }
