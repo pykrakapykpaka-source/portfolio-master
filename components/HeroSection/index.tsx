@@ -174,7 +174,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
           translateX: welcomeBoxTranslateX,
           translateY: welcomeBoxTranslateY,
         }}
-        className="flex items-center justify-center absolute left-0 top-0 w-full h-screen z-[501] rounded-3xl"
+        className="flex items-center justify-center absolute left-0 top-0 w-full h-[100svh] min-h-[100svh] z-[501] rounded-3xl"
       >
         <div className="relative bg-white w-[80%] md:w-[30rem] h-[27.5rem] lg:h-[30rem]">
           <h1 className="lg:overflow-hidden absolute text-3xl sm:text-4xl md:text-[34px] lg:text-5xl -left-6 lg:-left-12 -top-6 lg:-top-16 font-extrabold select-none w-max max-w-[80%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[80%]">
@@ -274,7 +274,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                 top: "50%",
                 transform: "translateY(-50%)",
                 left: "0px",
-                height: "100vh",
+                height: "100svh",
                 width: "100vw",
               }}
             >

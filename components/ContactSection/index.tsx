@@ -223,7 +223,7 @@ export default function ContactSection({ dictionary }: { dictionary?: any }) {
           alt="Zamów stronę internetową"
           width={1024}
           height={1024}
-          className="px-4 lg:px-0 max-w-[500px]"
+          className="px-4 lg:px-0 sm:max-w-[500px] max-w-[90%]"
         />
       </div>
       <div className="h-max px-4 mt-12 flex flex-row items-center justify-between w-full">

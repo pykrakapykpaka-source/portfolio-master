@@ -9,7 +9,8 @@ export default function StarsBg() {
     <Canvas
       style={{
         width: "100%",
-        height: "100%",
+        height: "100svh",
+        minHeight: "100svh",
         position: "fixed",
         left: "0",
         top: "0",

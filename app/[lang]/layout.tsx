@@ -8,39 +8,45 @@ import { NavLeft, NavRight } from "@/components/Navigation";
 import Script from "next/script";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
-export const metadata: Metadata = {
-  title: "wesiudev.com | Front-end Developer Paweł Wessel - Portfolio",
-  description:
-    "Tworzę strony i aplikacje internetowe, sklepy internetowy, prowdzę marketing w Google Ads. Zajmuję się projektowaniem graficznym i designem.",
-  icons: [
-    {
-      url: "/favicon.ico",
-      sizes: "32x32",
-      type: "image/x-icon",
-    },
-  ],
-  openGraph: {
-    type: "website",
-    url: `https://wesiudev.com/`,
-    title: "wesiudev.com | Front-end Developer Paweł Wessel - Portfolio",
-    description:
-      "Tworzę strony i aplikacje internetowe, sklepy internetowy, prowdzę marketing w Google Ads. Zajmuję się projektowaniem graficznym i designem.",
-    siteName: "WESIUDEV.COM",
-    images: [
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: Locale };
+}): Promise<Metadata> {
+  const dictionary = await getDictionary(params.lang);
+  const meta = dictionary.metadata;
+  return {
+    title: meta.home.title,
+    description: meta.home.description,
+    icons: [
       {
-        url: "/ponczek.png",
-        type: "image/png",
+        url: "/favicon.ico",
+        sizes: "32x32",
+        type: "image/x-icon",
       },
     ],
-  },
-  twitter: {
-    site: "@wesiudev",
-    title: "wesiudev.com | Front-end Developer Paweł Wessel - Portfolio",
-    description:
-      "Tworzę strony i aplikacje internetowe, sklepy internetowy, prowdzę marketing w Google Ads. Zajmuję się projektowaniem graficznym i designem.",
-    images: [{ url: "/ponczek.png", type: "image/png" }],
-  },
-};
+    openGraph: {
+      type: "website",
+      url: "https://wesiudev.com/",
+      title: meta.home.title,
+      description: meta.home.description,
+      siteName: meta.siteName,
+      images: [
+        {
+          url: "/assets/pinkdonut.png",
+          type: "image/png",
+        },
+      ],
+    },
+    twitter: {
+      site: "@wesiudev",
+      title: meta.home.title,
+      description: meta.home.description,
+      images: [{ url: "/assets/pinkdonut.png", type: "image/png" }],
+    },
+  };
+}
 export default async function Root({
   children,
   params,

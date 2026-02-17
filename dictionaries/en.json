@@ -222,5 +222,16 @@
     "plan2": "Exploring the field of game development in my free time.",
     "plan3": "Pursuing interests beyond programming, such as improving my drawing skills and mastering communication in the Dutch language.",
     "resume": "Resume"
+  },
+  "metadata": {
+    "siteName": "WESIUDEV.COM",
+    "home": {
+      "title": "wesiudev.com | Front-end Developer Paweł Wessel - Portfolio",
+      "description": "I build websites and web applications, online stores, and run Google Ads marketing. I do graphic design and UI/UX."
+    },
+    "about": {
+      "title": "How I became a front-end developer?",
+      "description": "How I started programming, how I became a front-end developer, story, motivation, timeline and future plans."
+    }
   }
 }
