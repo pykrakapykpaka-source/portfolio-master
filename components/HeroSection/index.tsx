@@ -105,7 +105,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
 
   const h1TextOpacity = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.65],
+    [0.22, 0.35, 0.65],
     [0, 1, 0]
   );
   const h2TextOpacity = useTransform(
@@ -120,7 +120,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
   );
   const h1TextTranslateX = useTransform(
     scrollYProgress,
-    [0.1, 0.2, 0.3],
+    [0.22, 0.3, 0.38],
     ["30vw", "15vw", "0vw"]
   );
   const h2TextTranslateX = useTransform(
@@ -130,7 +130,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
   );
   const h1TextTranslateY = useTransform(
     scrollYProgress,
-    [0.1, 0.2, 0.4],
+    [0.22, 0.3, 0.4],
     ["0vw", "0vw", "0vw"]
   );
   const h2TextTranslateY = useTransform(
@@ -176,14 +176,14 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
         }}
         className="flex items-center justify-center absolute left-0 top-0 w-full h-[100svh] min-h-[100svh] z-[501] rounded-3xl"
       >
-        <div className="relative bg-white w-[80%] md:w-[30rem] h-[27.5rem] lg:h-[30rem]">
-          <h1 className="lg:overflow-hidden absolute text-3xl sm:text-4xl md:text-[34px] lg:text-5xl -left-6 lg:-left-12 -top-6 lg:-top-16 font-extrabold select-none w-max max-w-[80%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[80%]">
+        <div className="relative bg-white w-[80%] md:w-[30rem] h-max lg:h-[30rem]">
+          <h1 className="lg:overflow-hidden text-2xl sm:text-4xl md:text-[34px] lg:text-5xl lg:-left-12 lg:-top-16 -mt-6 -ml-6 font-extrabold select-none w-max max-w-[80%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[80%]">
             <span className="box-decoration-clone bg-yellow-300 px-6 py-2 leading-[1.5] ">
               {dictionary.HomePage.welcomeText}
             </span>
             {/* i18n todo */}
           </h1>
-          <div className="mt-36 sm:mt-44 md:mt-40 lg:mt-48 px-8">
+          <div className="px-8 mt-4">
             <div className="flex flex-row items-center w-max max-w-full">
               <div className="flex items-center justify-center rounded-full overflow-hidden w-16 sm:w-24 h-16 sm:h-24">
                 <Image
@@ -209,7 +209,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
               <p className="">{dictionary.HomePage.welcomeTextDescription}</p>
             </div>
           </div>
-          <div className="flex flex-row items-center pb-3 gap-3 absolute right-3 bottom-0 font-bold px-6 select-none w-max max-w-[80%]">
+          <div className="flex flex-row items-end justify-end pb-3 mt-1.5 gap-3 font-bold px-6 select-none w-full">
             {/* scroll icon */}
             <div>{dictionary.HomePage.scrollDown}</div>
             <img
