@@ -179,44 +179,54 @@
     "timeline": [
       {
         "year": 2015,
-        "title": "IT school",
-        "description": "Began studying computer science at a technical high school"
+        "title": "IT Technical School",
+        "description": "I started studying at an IT technical high school, learning the basics of programming, databases, computer networks and other IT-related topics."
       },
       {
         "year": 2017,
         "title": "First Website",
-        "description": "In 2017 I created my first primitive website using HTML, CSS and JavaScript"
+        "description": "In 2017 I created my first simple website using HTML, CSS and JavaScript about classic games like Mario and Donkey Kong."
       },
       {
         "year": 2020,
-        "title": "Focus on PHP",
-        "description": "After passing my exams, I Focused on PHP and created my first project, which included a payment system."
+        "title": "PHP Journey",
+        "description": "After finishing school I started learning PHP and opened my first one-person business."
       },
       {
         "year": 2021,
         "title": "Learning React",
-        "description": "I decided to explore coding further, concentrating on a JavaScript library - React."
+        "description": "I wanted to grow in building web applications and came across the React framework."
       },
       {
         "year": 2022,
-        "title": "Encounter with Mentor",
-        "description": "Met my mentor, an experienced professional who reviewed my code and presented exciting challenges."
+        "title": "Mentor",
+        "description": "I met a mentor who helped me develop my skills."
       },
       {
         "year": 2023,
         "title": "Creating projects",
-        "description": "This year was a big step forward. I've learned a lot and created a collection of projects."
+        "description": "I built websites and components and discovered new libraries and frameworks such as Next.js, Tailwind CSS, Firebase, Stripe, ThreeJS, Chart.js and many more."
+      },
+      {
+        "year": 2024,
+        "title": "Online shops",
+        "description": "I built online shops such as Blackbell Studio (artworks) and Zaklejki.pl (sticker shop)."
+      },
+      {
+        "year": 2025,
+        "title": "Online platforms",
+        "description": "I focused on creating online platforms for freelancers (Quixy.pl), nail stylists (Naily.pl) and a database of pizzerias in Polish cities (Pizzuj.pl)."
       }
     ],
-    "motivation": "Motivation to code",
+    "motivation": "What I do as a front-end developer",
     "logic": "Logic",
-    "logicDesc": "I like to work with the logic of applications and optimization. Designing and implementing new features excites me, and I am constantly driven to innovate.",
+    "logicDesc": "I mainly work on application logic, responsiveness, design and user experience (UX). I optimize and position websites using SEO techniques, programmatic SEO, performance optimization and marketing strategies (e.g. Google Ads) to ensure the best possible visibility in search engines.",
     "learning": "Learning",
-    "learningDesc": "My passion for programming fuels my desire for continuous growth, and I actively pursue opportunities to learn.",
+    "learningDesc": "Programming drives me to continuous growth, discovering new ways of thinking and new technologies. I constantly look for opportunities to further improve my skills.",
     "visualization": "Visualization",
-    "visualizationDesc": "I find it satisfying to work with data that I can visualize. Observing the flow of information between the components I create is a source of great fascination for me.",
+    "visualizationDesc": "Working with data visualization is satisfying; as a front-end developer I collaborate with graphic designers and UX/UI designers, and I also handle design on my own.",
     "story": "My Story",
-    "storyDesc": "When I used to look at games or web applications, I often wondered, 'How is this made? Is it difficult to achieve?' I always wanted to find the answers to these questions. While working at the warehouse, I had a desire to grow, so after work, I would fire up my development environment and tinker with code, exploring newer technologies and solutions",
+    "storyDesc": "I used to look at games or applications and wonder, 'How is this made? Is it difficult to create?'. After work I would fire up my development environment and tinker with code, exploring new technologies and solutions.",
     "plans": "Future Plans",
     "plan1": "Learning to utilize different programming languages and staying updated with technologies I use.",
     "plan2": "Exploring the field of game development in my free time.",

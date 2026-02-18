@@ -179,44 +179,54 @@
       {
         "year": 2015,
         "title": "Szkoła",
-        "description": "Zacząłem uczyć się informatyki w Technikum Informatycznym."
+        "description": "Zacząłem uczyć się w technikum informatycznym. Uczyłem się podstaw programowania, baz danych, sieci komputerowych i innych zagadnień związanych z informatyką."
       },
       {
         "year": 2017,
         "title": "Pierwsza strona WWW",
-        "description": "W 2017 roku utworzyłem swoją pierwszą prostą stronę opartą o HTML, CSS i JavaScript."
+        "description": "W 2017 roku stworzyłem swoją pierwszą prostą stronę opartą o HTML, CSS i JavaScript o tematyce starszych gier typu Mario, Donkey Kong."
       },
       {
         "year": 2020,
         "title": "Przygoda PHP",
-        "description": "Po ukonczeniu szkoły, zacząłem uczyć się o PHP i utworzyłem swój pierwszy projekt."
+        "description": "Po ukonczeniu szkoły zacząłem uczyć się PHP i założyłem pierwszą jednoosobową działalność gospodarczą."
       },
       {
         "year": 2021,
         "title": "Nauka Reacta",
-        "description": "Chciałem rozwijać się w kierunku programowania i natknąłem się na bibliotekę React."
+        "description": "Chciałem rozwijać się w kierunku tworzenia aplikacji internetowych i natknąłem się na framework React."
       },
       {
         "year": 2022,
         "title": "Mentor",
-        "description": "Poznałem mentora, który pomógł mi w rozwoju swoich umiejętności."
+        "description": "Poznałem mentora, który pomógł mi w rozwoju umiejętności."
       },
       {
         "year": 2023,
         "title": "Tworzenie projektów",
-        "description": "Po ukonczeniu kursów, stworzyłem kilka projektów, które znajdują się w moim portfolio."
+        "description": "Tworzyłem strony i komponenty, poznałem nowe biblioteki i frameworki, takie jak Next.js, Tailwind CSS, Firebase, Stripe, ThreeJS, Chart.js i wiele innych."
+      },
+      {
+        "year": 2024,
+        "title": "Sklepy internetowe",
+        "description": "Tworzyłem sklepy internetowe, takie jak Blackbell Studio (prace artystyczne), czy Zaklejki.pl (sklep z naklejkami)."
+      },
+      {
+        "year": 2025,
+        "title": "Platformy internetowe",
+        "description": "Skupiłem się na tworzeniu platform internetowych. Platforma dla freelancerów (Quixy.pl), stylistek paznokci (Naily.pl), czy baza pizzerii w miastach Polski (Pizzuj.pl)."
       }
     ],
 
-    "motivation": "Motywacja do kodowania",
+    "motivation": "Czym zajmuję się jako programista front-end?",
     "logic": "Logika",
-    "logicDesc": "Lubię pracować nad logiką aplikacji i procesem optymalizacji. Projektowanie i implementacja nowych funkcji jest dla mnie ekscytująca.",
+    "logicDesc": "Pracuję głównie nad logiką aplikacji, responsywnością, designem, doświadczeniem użytkownika (UX). Pozycjonuję strony internetowe stosując techniki SEO, programmatic SEO, optymalizację wydajności i strategie marketingowe (np. Google Ads), aby zapewnić jak najlepszą widoczność w wyszukiwarkach.",
     "learning": "Nauka",
-    "learningDesc": "Moja pasja do programowania napędza mnie do ciągłego rozwoju, i na bieżąco szukam okazji do dalszego doskonalenia moich umiejętności.",
+    "learningDesc": "Programowanie napędza do ciągłego rozwoju, poznawania nowych schematów myślowych i technologii. Na bieżąco szukam okazji do dalszego doskonalenia umiejętności.",
     "visualization": "Wizualizacja",
-    "visualizationDesc": "Odczuwam ogromną satysfakcję z pracy z danymi, które mogę wizualizować, a przepływ informacji jest dla mnie czymś fascynującym.",
+    "visualizationDesc": "Praca z wizualizacją danych jest satysfakcjonująca, front-end developer współpracuje z grafikami, projektantami UX/UI, a także samodzielnie zajmuje się designem.",
     "story": "Moja historia",
-    "storyDesc": "Kiedyś patrzyłem na gry lub aplikacje internetowe i często zastanawiałem się: 'Jak to jest zrobione? Czy to trudne do osiągnięcia?' Zawsze chciałem znaleźć odpowiedzi na te pytania. Pracując w magazynie, pragnąłem rozwoju, więc po pracy uruchamiałem swoje środowisko developerskie i majstrowałem przy kodzie, eksplorując nowe technologie i rozwiązania.",
+    "storyDesc": "Patrzyłem na gry, czy aplikacje zastanawiając się 'Jak to jest zrobione?' 'Czy to trudne do stworzenia?'. Po pracy odpalałem środowisko developerskie i majstrowałem przy kodzie, eksplorując nowe technologie i rozwiązania.",
     "plans": "Plany na przyszłość",
     "plan1": "Nauka wykorzystywania różnych języków programowania i pozostanie na bieżąco z technologiami, których używam.",
     "plan2": "Programowania gier w wolnym czasie.",

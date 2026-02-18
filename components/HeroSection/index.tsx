@@ -176,7 +176,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
         }}
         className="flex items-center justify-center absolute left-0 top-0 w-full h-[100svh] min-h-[100svh] z-[501] rounded-3xl"
       >
-        <div className="relative bg-white w-[80%] md:w-[30rem] h-max lg:h-[30rem]">
+        <div className="relative bg-white w-[80%] md:w-[30rem] h-max lg:h-max pb-3">
           <h1 className="lg:overflow-hidden text-2xl sm:text-4xl md:text-[34px] lg:text-5xl lg:-left-12 lg:-top-16 -mt-6 -ml-6 font-extrabold select-none w-max max-w-[80%] sm:max-w-[70%] md:max-w-[90%] lg:max-w-[80%]">
             <span className="box-decoration-clone bg-yellow-300 px-6 py-2 leading-[1.5] ">
               {dictionary.HomePage.welcomeText}
@@ -185,7 +185,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
           </h1>
           <div className="px-8 mt-4">
             <div className="flex flex-row items-center w-max max-w-full">
-              <div className="flex items-center justify-center rounded-full overflow-hidden w-16 sm:w-24 h-16 sm:h-24">
+              <div className="rotate-12 flex items-center justify-center rounded-full overflow-hidden w-16 sm:w-24 h-16 sm:h-24">
                 <Image
                   src={authorImage}
                   alt="profile"
@@ -201,15 +201,15 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                 </p>
               </div>
             </div>
-            <div className="mt-4 p-4 sm:ml-24 text-lg font-dosis bg-gray-300 relative">
-              <div className="left-4 -top-1 text-gray-500 absolute z-[1000]">
+            <div className="mt-4 p-4 sm:ml-24 text-lg font-dosis bg-gray-100 relative">
+              <div className="left-4 -top-1 text-gray-300 absolute z-[1000]">
                 <FaQuoteLeft className="w-5 h-5" />
               </div>
 
               <p className="">{dictionary.HomePage.welcomeTextDescription}</p>
             </div>
           </div>
-          <div className="flex flex-row items-end justify-end pb-3 mt-1.5 gap-3 font-bold px-6 select-none w-full">
+          <div className="flex flex-row items-end justify-end mt-1.5 gap-3 font-bold px-6 select-none w-full">
             {/* scroll icon */}
             <div>{dictionary.HomePage.scrollDown}</div>
             <img
