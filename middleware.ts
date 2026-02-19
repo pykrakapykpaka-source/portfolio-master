@@ -3,16 +3,23 @@ import type { NextRequest } from "next/server";
 
 import { i18n } from "./i18n-config";
 
+import { match as matchLocale } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+
+function getLocale(request: NextRequest): string | undefined {
+  // Negotiator expects plain object so we need to transform headers
+  const negotiatorHeaders: Record<string, string> = {};
+  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+
+  // Use negotiator and intl-localematcher to get best locale
+  let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+  // @ts-ignore locales are readonly
+  const locales: string[] = i18n.locales;
+  return matchLocale(languages, locales, i18n.defaultLocale);
+}
+
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-
-  // Fast path for root: always redirect to default locale without detection.
-  if (pathname === "/") {
-    return NextResponse.redirect(
-      new URL(`/${i18n.defaultLocale}`, request.url)
-    );
-  }
-
   // Skip locale handling for Next internals, static assets, and any "file-like" path.
   // This is important for `next/image` because the optimizer fetches `/images/...` internally.
   const PUBLIC_FILE = /\.(.*)$/;
@@ -37,11 +44,13 @@ export function middleware(request: NextRequest) {
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 
-  // Redirect if there is no locale (use defaultLocale to avoid Intl.getCanonicalLocales crashes in Edge)
+  // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
-    return NextResponse.redirect(
-      new URL(`/${i18n.defaultLocale}${pathname}`, request.url)
-    );
+    const locale = getLocale(request);
+
+    // e.g. incoming request is /products
+    // The new URL is now /en-US/products
+    return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
 }
 
