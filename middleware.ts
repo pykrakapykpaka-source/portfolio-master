@@ -24,6 +24,14 @@ function getLocale(request: NextRequest): string {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  // Fast path for root: always redirect to default locale without detection.
+  if (pathname === "/") {
+    return NextResponse.redirect(
+      new URL(`/${i18n.defaultLocale}`, request.url)
+    );
+  }
+
   // Skip locale handling for Next internals, static assets, and any "file-like" path.
   // This is important for `next/image` because the optimizer fetches `/images/...` internally.
   const PUBLIC_FILE = /\.(.*)$/;
