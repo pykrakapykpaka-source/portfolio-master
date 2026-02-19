@@ -9,6 +9,8 @@ import Script from "next/script";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://wesselpawel.com";
+
 export async function generateMetadata({
   params,
 }: {
@@ -16,9 +18,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const dictionary = await getDictionary(params.lang);
   const meta = dictionary.metadata;
+  const url = `${SITE_URL}/${params.lang}`;
   return {
+    metadataBase: new URL(SITE_URL),
     title: meta.home.title,
     description: meta.home.description,
+    alternates: {
+      canonical: `/${params.lang}`,
+      languages: {
+        en: "/en",
+        pl: "/pl",
+      },
+    },
     icons: [
       {
         url: "/favicon.ico",
@@ -28,7 +39,7 @@ export async function generateMetadata({
     ],
     openGraph: {
       type: "website",
-      url: "https://wesiudev.com/",
+      url,
       title: meta.home.title,
       description: meta.home.description,
       siteName: meta.siteName,
