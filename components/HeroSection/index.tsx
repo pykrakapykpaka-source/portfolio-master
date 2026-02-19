@@ -105,7 +105,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
 
   return (
     <>
-      <motion.div
+      <motionDiv.div
         style={{
           opacity: welcomeBoxOpacity,
           translateX: welcomeBoxTranslateX,
@@ -157,7 +157,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
             {/* i18n todo */}
           </div>
         </div>
-      </motion.div>
+      </motionDiv.div>
       <ProjectShowcase dictionary={dictionary} />
       <motionDiv.div
         className="absolute left-0 top-0 h-[700vh] w-screen"
