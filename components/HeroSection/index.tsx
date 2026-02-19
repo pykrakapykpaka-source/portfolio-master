@@ -1,88 +1,25 @@
 "use client";
 import authorImage from "@/public/assets/author.png";
-import React, { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { useLoader } from "@react-three/fiber";
+import React, { useRef } from "react";
 import {
   MotionValue,
   useScroll,
   useTransform,
   motion as motionDiv,
 } from "framer-motion";
-import { motion } from "framer-motion-3d";
 import ProjectShowcase from "../ProjectShowcase";
 import useWindowDimensions from "../../utils/useWindowDimensions";
 import Image from "next/image";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
+import dynamic from "next/dynamic";
+const HeroCanvas = dynamic(() => import("./HeroCanvas"), {
+  ssr: false,
+  loading: () => null,
+});
 type motion = MotionValue<number>;
-
-interface ModelProps {
-  gltfPath: string;
-  rotateX: motion;
-  rotateY: motion;
-  rotateZ: motion;
-  donutPosX: motion;
-  donutPosY: motion;
-  donutPosZ: motion;
-  scale: motion;
-}
-
-const FlyingDonut: React.FC<ModelProps> = ({
-  donutPosX,
-  donutPosY,
-  donutPosZ,
-  rotateX,
-  rotateY,
-  rotateZ,
-  gltfPath,
-  scale,
-}) => {
-  const gltf = useLoader(GLTFLoader, gltfPath);
-
-  return (
-    <motion.primitive
-      object={gltf.scene}
-      scale={scale}
-      rotation-x={rotateX}
-      duration={300}
-      position={[donutPosX, donutPosY, donutPosZ]}
-    />
-  );
-};
-const HeroDonut = ({
-  gltfPath,
-  donut2PosX,
-  donut2PosY,
-  donut2PosZ,
-  scale,
-  rotationX,
-}: {
-  gltfPath: string;
-  donut2PosX: motion;
-  donut2PosY: motion;
-  donut2PosZ: motion;
-  scale: motion;
-  rotationX: motion;
-}) => {
-  const gltf = useLoader(GLTFLoader, gltfPath);
-  const mesh = useRef<any>();
-  useFrame(() => (mesh.current.rotation.y += 0.0009));
-  return (
-    <motion.primitive
-      ref={mesh}
-      object={gltf.scene}
-      scale={scale}
-      rotation-x={rotationX}
-      position={[donut2PosX, donut2PosY, donut2PosZ]}
-    />
-  );
-};
 
 export default function HeroSection({ dictionary }: { dictionary: any }) {
   //todo typescript
-  const gltfPath = "/assets/untitled5.glb";
-  const gltfPath2 = "/assets/untitled.glb";
   const mainWrapper = useRef<any>();
   const { scrollYProgress } = useScroll({
     target: mainWrapper,
@@ -266,43 +203,20 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
           className="duration-500"
           style={{ opacity: menuOpacity }}
         >
-          <Suspense fallback={<div>Loading</div>}>
-            <Canvas
-              style={{
-                zIndex: "10",
-                position: "fixed",
-                top: "50%",
-                transform: "translateY(-50%)",
-                left: "0px",
-                height: "100svh",
-                width: "100vw",
-              }}
-            >
-              {/* Brighter, more balanced lighting */}
-              <ambientLight intensity={1.25} />
-              <pointLight position={[3, 3, -5]} intensity={2.2} />
-              <directionalLight position={[6, 8, 2]} intensity={1.4} />
-              <directionalLight position={[-6, 2, -2]} intensity={0.6} />
-              <FlyingDonut
-                scale={scale}
-                donutPosX={donutPosX}
-                donutPosY={donutPosY}
-                donutPosZ={donutPosZ}
-                rotateX={rotateX}
-                rotateY={rotateY}
-                rotateZ={rotateZ}
-                gltfPath={gltfPath}
-              />
-              <HeroDonut
-                donut2PosX={donut2PosX}
-                donut2PosY={donut2PosY}
-                donut2PosZ={donut2PosZ}
-                gltfPath={gltfPath2}
-                scale={donut2Scale}
-                rotationX={donut2RotationX}
-              />
-            </Canvas>
-          </Suspense>
+          <HeroCanvas
+            scale={scale}
+            rotateX={rotateX}
+            rotateY={rotateY}
+            rotateZ={rotateZ}
+            donutPosX={donutPosX}
+            donutPosY={donutPosY}
+            donutPosZ={donutPosZ}
+            donut2PosX={donut2PosX}
+            donut2PosY={donut2PosY}
+            donut2PosZ={donut2PosZ}
+            donut2RotationX={donut2RotationX}
+            donut2Scale={donut2Scale}
+          />
         </motionDiv.div>
       </motionDiv.div>
     </>
