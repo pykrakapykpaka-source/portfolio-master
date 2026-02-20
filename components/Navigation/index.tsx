@@ -92,7 +92,7 @@ export function NavLeft() {
       <Link
         target="_blank"
         title="Przejdź do Linkedin.com"
-        href="https://linkedin.com/in/wesiudev"
+        href="https://linkedin.com/in/wesselpawel"
         className="duration-200 text-white"
       >
         <FaLinkedin className="h-8 w-8" />
