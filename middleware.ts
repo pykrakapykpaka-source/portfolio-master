@@ -3,7 +3,6 @@ import type { NextRequest } from "next/server";
 
 import { i18n } from "./i18n-config";
 
-import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
 function getLocale(request: NextRequest): string | undefined {
@@ -11,19 +10,16 @@ function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders })
-    .languages()
-    .filter((language) => language !== "*" && language.trim().length > 0);
   // @ts-ignore locales are readonly
   const locales: string[] = i18n.locales;
 
-  if (languages.length === 0) {
-    return i18n.defaultLocale;
-  }
-
+  // Avoid Intl canonicalization crashes on malformed bot headers by
+  // letting Negotiator choose directly from supported locales.
   try {
-    return matchLocale(languages, locales, i18n.defaultLocale);
+    const locale = new Negotiator({ headers: negotiatorHeaders }).language(
+      locales
+    );
+    return locale ?? i18n.defaultLocale;
   } catch {
     return i18n.defaultLocale;
   }
