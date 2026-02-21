@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 import { i18n } from "./i18n-config";
 
-function getLocale(request: NextRequest): string | undefined {
+function getLocale(): string {
   return i18n.defaultLocale;
 }
 
@@ -35,7 +35,7 @@ export function middleware(request: NextRequest) {
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
+    const locale = getLocale();
 
     // e.g. incoming request is /products
     // The new URL is now /en-US/products

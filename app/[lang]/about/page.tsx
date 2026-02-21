@@ -1,13 +1,18 @@
 import { getDictionary } from "@/get-dictionary";
-import { Locale } from "@/i18n-config";
+import { hasLocale } from "@/i18n-config";
 import Content from "./Content";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: Locale };
+  params: { lang: string };
 }): Promise<Metadata> {
+  if (!hasLocale(params.lang)) {
+    notFound();
+  }
+
   const dictionary = await getDictionary(params.lang);
   const meta = dictionary.metadata.about;
   return {
@@ -24,7 +29,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { lang: Locale } }) {
+export default async function Page({ params }: { params: { lang: string } }) {
+  if (!hasLocale(params.lang)) {
+    notFound();
+  }
+
   const dictionary = await getDictionary(params.lang);
   return (
     <div>

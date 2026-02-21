@@ -6,14 +6,23 @@ import "aos/dist/aos.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { NavLeft, NavRight } from "@/components/Navigation";
 import Script from "next/script";
-import { Locale } from "@/i18n-config";
+import { hasLocale, i18n } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
+import { notFound } from "next/navigation";
+
+export function generateStaticParams() {
+  return i18n.locales.map((lang) => ({ lang }));
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: Locale };
+  params: { lang: string };
 }): Promise<Metadata> {
+  if (!hasLocale(params.lang)) {
+    notFound();
+  }
+
   const dictionary = await getDictionary(params.lang);
   const meta = dictionary.metadata;
   return {
@@ -57,11 +66,15 @@ export default async function Root({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: Locale };
+  params: { lang: string };
 }) {
+  if (!hasLocale(params.lang)) {
+    notFound();
+  }
+
   const dictionary = await getDictionary(params.lang);
   return (
-    <html className="scrollbarBlack">
+    <html className="scrollbarBlack" lang={params.lang}>
       <body
         className={`${cocosharp.variable} ${lato.variable} ${anta.variable} ${dosis.variable} font-sans scrollbarBlack overflow-x-hidden`}
       >
