@@ -12,10 +12,21 @@ function getLocale(request: NextRequest): string | undefined {
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
   // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+  let languages = new Negotiator({ headers: negotiatorHeaders })
+    .languages()
+    .filter((language) => language !== "*" && language.trim().length > 0);
   // @ts-ignore locales are readonly
   const locales: string[] = i18n.locales;
-  return matchLocale(languages, locales, i18n.defaultLocale);
+
+  if (languages.length === 0) {
+    return i18n.defaultLocale;
+  }
+
+  try {
+    return matchLocale(languages, locales, i18n.defaultLocale);
+  } catch {
+    return i18n.defaultLocale;
+  }
 }
 
 export function middleware(request: NextRequest) {
