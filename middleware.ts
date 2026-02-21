@@ -3,26 +3,8 @@ import type { NextRequest } from "next/server";
 
 import { i18n } from "./i18n-config";
 
-import Negotiator from "negotiator";
-
 function getLocale(request: NextRequest): string | undefined {
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales;
-
-  // Avoid Intl canonicalization crashes on malformed bot headers by
-  // letting Negotiator choose directly from supported locales.
-  try {
-    const locale = new Negotiator({ headers: negotiatorHeaders }).language(
-      locales
-    );
-    return locale ?? i18n.defaultLocale;
-  } catch {
-    return i18n.defaultLocale;
-  }
+  return i18n.defaultLocale;
 }
 
 export function middleware(request: NextRequest) {
