@@ -11,8 +11,6 @@ type MotionNumber = MotionValue<number>;
 interface FlyingDonutProps {
   gltfPath: string;
   rotateX: MotionNumber;
-  rotateY: MotionNumber;
-  rotateZ: MotionNumber;
   donutPosX: MotionNumber;
   donutPosY: MotionNumber;
   donutPosZ: MotionNumber;
@@ -36,8 +34,6 @@ export interface HeroSceneProps {
   donutPosY: MotionNumber;
   donutPosZ: MotionNumber;
   rotateX: MotionNumber;
-  rotateY: MotionNumber;
-  rotateZ: MotionNumber;
   donut2PosX: MotionNumber;
   donut2PosY: MotionNumber;
   donut2PosZ: MotionNumber;
@@ -50,8 +46,6 @@ const FlyingDonut: React.FC<FlyingDonutProps> = ({
   donutPosY,
   donutPosZ,
   rotateX,
-  rotateY,
-  rotateZ,
   gltfPath,
   scale,
 }) => {
@@ -62,8 +56,6 @@ const FlyingDonut: React.FC<FlyingDonutProps> = ({
       object={gltf.scene}
       scale={scale}
       rotation-x={rotateX}
-      rotation-y={rotateY}
-      rotation-z={rotateZ}
       duration={300}
       position={[donutPosX, donutPosY, donutPosZ]}
     />
@@ -106,8 +98,6 @@ export default function HeroScene({
   donutPosY,
   donutPosZ,
   rotateX,
-  rotateY,
-  rotateZ,
   donut2PosX,
   donut2PosY,
   donut2PosZ,
@@ -137,8 +127,6 @@ export default function HeroScene({
         donutPosY={donutPosY}
         donutPosZ={donutPosZ}
         rotateX={rotateX}
-        rotateY={rotateY}
-        rotateZ={rotateZ}
         gltfPath={gltfPath}
       />
 

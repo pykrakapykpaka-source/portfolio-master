@@ -13,7 +13,7 @@ import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
 import type { HeroSceneProps } from "./hero-scene";
 const BOT_USER_AGENT_REGEX =
-  /bot|crawler|spider|crawling|googlebot|bingbot|yandex|duckduckbot|baiduspider|slurp/i;
+  /bot|crawler|spider|crawling|googlebot|google-inspectiontool|inspectiontool|bingbot|yandex|duckduckbot|baiduspider|slurp|lighthouse|pagespeed/i;
 
 const HeroScene = dynamic<HeroSceneProps>(() => import("./hero-scene"), {
   ssr: false,
@@ -32,8 +32,6 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
   // const { width } = useWindowDimensions();
   const scale = useTransform(scrollYProgress, [0.2, 0.6, 1], [0, 1.5, 25]);
   const rotateX = useTransform(scrollYProgress, [0.1, 0.7, 1], [0, 8, 9.3]);
-  const rotateY = useTransform(scrollYProgress, [0.4, 0.6], [0, 3]);
-  const rotateZ = useTransform(scrollYProgress, [0.4, 0.6, 1], [0, 3, 6]);
   const donutPosX = useTransform(scrollYProgress, [0.1, 0.3], [0, 0]);
   const donutPosY = useTransform(scrollYProgress, [0.1, 0.7, 1], [1, 0, -8]);
   const donutPosZ = useTransform(scrollYProgress, [0.1, 0.5], [1, 2.8]);
@@ -228,8 +226,6 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
               donutPosY={donutPosY}
               donutPosZ={donutPosZ}
               rotateX={rotateX}
-              rotateY={rotateY}
-              rotateZ={rotateZ}
               donut2PosX={donut2PosX}
               donut2PosY={donut2PosY}
               donut2PosZ={donut2PosZ}
