@@ -1,13 +1,14 @@
 "use client";
 import AOS from "aos";
 import { FaCode } from "react-icons/fa";
-import StarsBg from "@/components/StarsBg";
 import { useEffect } from "react";
-import { RiComputerLine } from "react-icons/ri";
 import { FaComputerMouse } from "react-icons/fa6";
-import { LiaRocketSolid } from "react-icons/lia";
-import Link from "next/link";
 import Footer from "@/components/ContactSection";
+import dynamic from "next/dynamic";
+
+const StarsBg = dynamic(() => import("@/components/StarsBg"), {
+  ssr: false,
+});
 export default function Content({
   dictionary,
   lang,

@@ -3,7 +3,11 @@ import { Suspense, useEffect, useRef } from "react";
 import AOS from "aos";
 import HeroSection from "@/components/HeroSection";
 import { motion, useScroll, useTransform } from "framer-motion";
-import StarsBg from "@/components/StarsBg";
+import dynamic from "next/dynamic";
+
+const StarsBg = dynamic(() => import("@/components/StarsBg"), {
+  ssr: false,
+});
 export default function IndexPage({ dictionary }: { dictionary: any }) {
   useEffect(() => {
     AOS.init({

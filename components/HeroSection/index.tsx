@@ -1,6 +1,6 @@
 "use client";
 import authorImage from "@/public/assets/author.png";
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { useLoader } from "@react-three/fiber";
@@ -16,6 +16,8 @@ import useWindowDimensions from "../../utils/useWindowDimensions";
 import Image from "next/image";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 type motion = MotionValue<number>;
+const BOT_USER_AGENT_REGEX =
+  /bot|crawler|spider|crawling|googlebot|bingbot|yandex|duckduckbot|baiduspider|slurp/i;
 
 interface ModelProps {
   gltfPath: string;
@@ -165,6 +167,13 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
     [0.1, 0.2, 0.3],
     ["-50%", "0%", "50%"]
   );
+  const [canRender3D, setCanRender3D] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || "";
+    const isBot = BOT_USER_AGENT_REGEX.test(userAgent);
+    setCanRender3D(!isBot);
+  }, []);
 
   return (
     <>
@@ -266,43 +275,45 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
           className="duration-500"
           style={{ opacity: menuOpacity }}
         >
-          <Suspense fallback={<div>Loading</div>}>
-            <Canvas
-              style={{
-                zIndex: "10",
-                position: "fixed",
-                top: "50%",
-                transform: "translateY(-50%)",
-                left: "0px",
-                height: "100svh",
-                width: "100vw",
-              }}
-            >
-              {/* Brighter, more balanced lighting */}
-              <ambientLight intensity={1.25} />
-              <pointLight position={[3, 3, -5]} intensity={2.2} />
-              <directionalLight position={[6, 8, 2]} intensity={1.4} />
-              <directionalLight position={[-6, 2, -2]} intensity={0.6} />
-              <FlyingDonut
-                scale={scale}
-                donutPosX={donutPosX}
-                donutPosY={donutPosY}
-                donutPosZ={donutPosZ}
-                rotateX={rotateX}
-                rotateY={rotateY}
-                rotateZ={rotateZ}
-                gltfPath={gltfPath}
-              />
-              <HeroDonut
-                donut2PosX={donut2PosX}
-                donut2PosY={donut2PosY}
-                donut2PosZ={donut2PosZ}
-                gltfPath={gltfPath2}
-                scale={donut2Scale}
-                rotationX={donut2RotationX}
-              />
-            </Canvas>
-          </Suspense>
+          {canRender3D ? (
+            <Suspense fallback={<div>Loading</div>}>
+              <Canvas
+                style={{
+                  zIndex: "10",
+                  position: "fixed",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  left: "0px",
+                  height: "100svh",
+                  width: "100vw",
+                }}
+              >
+                {/* Brighter, more balanced lighting */}
+                <ambientLight intensity={1.25} />
+                <pointLight position={[3, 3, -5]} intensity={2.2} />
+                <directionalLight position={[6, 8, 2]} intensity={1.4} />
+                <directionalLight position={[-6, 2, -2]} intensity={0.6} />
+                <FlyingDonut
+                  scale={scale}
+                  donutPosX={donutPosX}
+                  donutPosY={donutPosY}
+                  donutPosZ={donutPosZ}
+                  rotateX={rotateX}
+                  rotateY={rotateY}
+                  rotateZ={rotateZ}
+                  gltfPath={gltfPath}
+                />
+                <HeroDonut
+                  donut2PosX={donut2PosX}
+                  donut2PosY={donut2PosY}
+                  donut2PosZ={donut2PosZ}
+                  gltfPath={gltfPath2}
+                  scale={donut2Scale}
+                  rotationX={donut2RotationX}
+                />
+              </Canvas>
+            </Suspense>
+          ) : null}
         </motionDiv.div>
       </motionDiv.div>
     </>
