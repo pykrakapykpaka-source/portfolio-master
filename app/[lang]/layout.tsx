@@ -37,7 +37,7 @@ export async function generateMetadata({
     ],
     openGraph: {
       type: "website",
-      url: "https://wesiudev.com/",
+      url: "https://wesselpawel.com/",
       title: meta.home.title,
       description: meta.home.description,
       siteName: meta.siteName,
