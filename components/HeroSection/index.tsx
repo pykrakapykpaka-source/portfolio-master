@@ -277,7 +277,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
         >
           {canRender3D ? (
             <Suspense fallback={<div>Loading</div>}>
-              {/* <Canvas
+              <Canvas
                 style={{
                   zIndex: "10",
                   position: "fixed",
@@ -310,7 +310,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                   scale={donut2Scale}
                   rotationX={donut2RotationX}
                 />
-              </Canvas> */}
+              </Canvas>
             </Suspense>
           ) : null}
         </motionDiv.div>
