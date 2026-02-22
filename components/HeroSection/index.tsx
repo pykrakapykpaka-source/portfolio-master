@@ -1,85 +1,24 @@
 "use client";
 import authorImage from "@/public/assets/author.png";
-import React, { Suspense, useEffect, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { useLoader } from "@react-three/fiber";
+import React, { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import {
-  MotionValue,
   useScroll,
   useTransform,
   motion as motionDiv,
 } from "framer-motion";
 import { motion } from "framer-motion-3d";
 import ProjectShowcase from "../ProjectShowcase";
-import useWindowDimensions from "../../utils/useWindowDimensions";
 import Image from "next/image";
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-type motion = MotionValue<number>;
+import { FaQuoteLeft } from "react-icons/fa";
+import type { HeroSceneProps } from "./hero-scene";
 const BOT_USER_AGENT_REGEX =
   /bot|crawler|spider|crawling|googlebot|bingbot|yandex|duckduckbot|baiduspider|slurp/i;
 
-interface ModelProps {
-  gltfPath: string;
-  rotateX: motion;
-  rotateY: motion;
-  rotateZ: motion;
-  donutPosX: motion;
-  donutPosY: motion;
-  donutPosZ: motion;
-  scale: motion;
-}
-
-const FlyingDonut: React.FC<ModelProps> = ({
-  donutPosX,
-  donutPosY,
-  donutPosZ,
-  rotateX,
-  rotateY,
-  rotateZ,
-  gltfPath,
-  scale,
-}) => {
-  const gltf = useLoader(GLTFLoader, gltfPath);
-
-  return (
-    <motion.primitive
-      object={gltf.scene}
-      scale={scale}
-      rotation-x={rotateX}
-      duration={300}
-      position={[donutPosX, donutPosY, donutPosZ]}
-    />
-  );
-};
-const HeroDonut = ({
-  gltfPath,
-  donut2PosX,
-  donut2PosY,
-  donut2PosZ,
-  scale,
-  rotationX,
-}: {
-  gltfPath: string;
-  donut2PosX: motion;
-  donut2PosY: motion;
-  donut2PosZ: motion;
-  scale: motion;
-  rotationX: motion;
-}) => {
-  const gltf = useLoader(GLTFLoader, gltfPath);
-  const mesh = useRef<any>();
-  useFrame(() => (mesh.current.rotation.y += 0.0009));
-  return (
-    <motion.primitive
-      ref={mesh}
-      object={gltf.scene}
-      scale={scale}
-      rotation-x={rotationX}
-      position={[donut2PosX, donut2PosY, donut2PosZ]}
-    />
-  );
-};
+const HeroScene = dynamic<HeroSceneProps>(() => import("./hero-scene"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function HeroSection({ dictionary }: { dictionary: any }) {
   //todo typescript
@@ -172,7 +111,12 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
   useEffect(() => {
     const userAgent = navigator.userAgent || "";
     const isBot = BOT_USER_AGENT_REGEX.test(userAgent);
-    setCanRender3D(!isBot);
+    const canvas = document.createElement("canvas");
+    const hasWebGLSupport =
+      !!window.WebGLRenderingContext &&
+      !!(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+
+    setCanRender3D(!isBot && hasWebGLSupport);
   }, []);
 
   return (
@@ -276,42 +220,22 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
           style={{ opacity: menuOpacity }}
         >
           {canRender3D ? (
-            <Suspense fallback={<div>Loading</div>}>
-              <Canvas
-                style={{
-                  zIndex: "10",
-                  position: "fixed",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  left: "0px",
-                  height: "100svh",
-                  width: "100vw",
-                }}
-              >
-                <ambientLight intensity={1.25} />
-                <pointLight position={[3, 3, -5]} intensity={2.2} />
-                <directionalLight position={[6, 8, 2]} intensity={1.4} />
-                <directionalLight position={[-6, 2, -2]} intensity={0.6} />
-                <FlyingDonut
-                  scale={scale}
-                  donutPosX={donutPosX}
-                  donutPosY={donutPosY}
-                  donutPosZ={donutPosZ}
-                  rotateX={rotateX}
-                  rotateY={rotateY}
-                  rotateZ={rotateZ}
-                  gltfPath={gltfPath}
-                />
-                <HeroDonut
-                  donut2PosX={donut2PosX}
-                  donut2PosY={donut2PosY}
-                  donut2PosZ={donut2PosZ}
-                  gltfPath={gltfPath2}
-                  scale={donut2Scale}
-                  rotationX={donut2RotationX}
-                />
-              </Canvas>
-            </Suspense>
+            <HeroScene
+              gltfPath={gltfPath}
+              gltfPath2={gltfPath2}
+              scale={scale}
+              donutPosX={donutPosX}
+              donutPosY={donutPosY}
+              donutPosZ={donutPosZ}
+              rotateX={rotateX}
+              rotateY={rotateY}
+              rotateZ={rotateZ}
+              donut2PosX={donut2PosX}
+              donut2PosY={donut2PosY}
+              donut2PosZ={donut2PosZ}
+              donut2Scale={donut2Scale}
+              donut2RotationX={donut2RotationX}
+            />
           ) : null}
         </motionDiv.div>
       </motionDiv.div>
