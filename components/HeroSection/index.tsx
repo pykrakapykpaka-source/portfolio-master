@@ -108,64 +108,64 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
   const h1TextOpacity = useTransform(
     scrollYProgress,
     [0.22, 0.35, 0.65],
-    [0, 1, 0]
+    [0, 1, 0],
   );
   const h2TextOpacity = useTransform(
     scrollYProgress,
     [0.4, 0.6, 0.7],
-    [0, 1, 0]
+    [0, 1, 0],
   );
   const h4TextOpacity = useTransform(
     scrollYProgress,
     [0.7, 0.75, 0.85],
-    [0, 1, 0]
+    [0, 1, 0],
   );
   const h1TextTranslateX = useTransform(
     scrollYProgress,
     [0.22, 0.3, 0.38],
-    ["30vw", "15vw", "0vw"]
+    ["30vw", "15vw", "0vw"],
   );
   const h2TextTranslateX = useTransform(
     scrollYProgress,
     [0.4, 0.5, 0.6],
-    ["0vw", "0vw", "0vw"]
+    ["0vw", "0vw", "0vw"],
   );
   const h1TextTranslateY = useTransform(
     scrollYProgress,
     [0.22, 0.3, 0.4],
-    ["0vw", "0vw", "0vw"]
+    ["0vw", "0vw", "0vw"],
   );
   const h2TextTranslateY = useTransform(
     scrollYProgress,
     [0.35, 0.4, 0.6],
-    ["-25vw", "-15vw", "0vw"]
+    ["-25vw", "-15vw", "0vw"],
   );
   const h4TextTranslateY = useTransform(
     scrollYProgress,
     [0.6, 0.7, 0.9],
-    ["4vw", "0vw", "-4vw"]
+    ["4vw", "0vw", "-4vw"],
   );
 
   //children values
   const menuOpacity = useTransform(scrollYProgress, (pos) =>
-    pos <= 0.9 ? 1 : 0
+    pos <= 0.9 ? 1 : 0,
   );
 
   //welcome box values
   const welcomeBoxOpacity = useTransform(
     scrollYProgress,
     [0.1, 0.15, 0.3],
-    [1, 0.5, 0]
+    [1, 0.5, 0],
   );
   const welcomeBoxTranslateX = useTransform(
     scrollYProgress,
     [0.1, 0.2, 0.3],
-    ["-50%", "0%", "50%"]
+    ["-50%", "0%", "50%"],
   );
   const welcomeBoxTranslateY = useTransform(
     scrollYProgress,
     [0.1, 0.2, 0.3],
-    ["-50%", "0%", "50%"]
+    ["-50%", "0%", "50%"],
   );
   const [canRender3D, setCanRender3D] = useState(false);
 
@@ -176,7 +176,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
   }, []);
 
   return (
-    <>
+    <div>
       <motion.div
         style={{
           opacity: welcomeBoxOpacity,
@@ -277,7 +277,7 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
         >
           {canRender3D ? (
             <Suspense fallback={<div>Loading</div>}>
-              <Canvas
+              {/* <Canvas
                 style={{
                   zIndex: "10",
                   position: "fixed",
@@ -288,7 +288,6 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                   width: "100vw",
                 }}
               >
-                {/* Brighter, more balanced lighting */}
                 <ambientLight intensity={1.25} />
                 <pointLight position={[3, 3, -5]} intensity={2.2} />
                 <directionalLight position={[6, 8, 2]} intensity={1.4} />
@@ -311,11 +310,11 @@ export default function HeroSection({ dictionary }: { dictionary: any }) {
                   scale={donut2Scale}
                   rotationX={donut2RotationX}
                 />
-              </Canvas>
+              </Canvas> */}
             </Suspense>
           ) : null}
         </motionDiv.div>
       </motionDiv.div>
-    </>
+    </div>
   );
 }

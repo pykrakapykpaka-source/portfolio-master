@@ -20,28 +20,30 @@ export default function IndexPage({ dictionary }: { dictionary: any }) {
     offset: ["start end", "end end"],
   });
   const background = useTransform(scrollYProgress, (pos) =>
-    pos >= 0.35 ? "rgb(12,12,12)" : ""
+    pos >= 0.35 ? "rgb(12,12,12)" : "",
   );
   const opacity = useTransform(scrollYProgress, (pos) =>
-    pos >= 0.35 ? "0" : "1"
+    pos >= 0.35 ? "0" : "1",
   );
   return (
-    <motion.div
-      ref={mainWrapper}
-      style={{ background }}
-      className="relative duration-500"
-    >
-      <div className="relative h-[100svh] w-full min-h-[100svh]">
-        <div className="fixed top-0 left-0 w-full h-[100svh] min-h-[100svh] bg-gradient-to-br from-black via-zinc-800 to-black scale-150"></div>
-        <StarsBg />
-        <motion.div
-          style={{ opacity }}
-          className="z-[0] duration-500 fixed left-0 top-0 bg-gradient-to-br from-blue-500 via-green-300 to-blue-500 background-animate delay-1000 h-[100svh] min-h-[100svh] w-full"
-        ></motion.div>
-      </div>
-      <Suspense>
-        <HeroSection dictionary={dictionary} />
-      </Suspense>
-    </motion.div>
+    <div>
+      <motion.div
+        ref={mainWrapper}
+        style={{ background }}
+        className="relative duration-500"
+      >
+        <div className="relative h-[100svh] w-full min-h-[100svh]">
+          <div className="fixed top-0 left-0 w-full h-[100svh] min-h-[100svh] bg-gradient-to-br from-black via-zinc-800 to-black scale-150"></div>
+          <StarsBg />
+          <motion.div
+            style={{ opacity }}
+            className="z-[0] duration-500 fixed left-0 top-0 bg-gradient-to-br from-blue-500 via-green-300 to-blue-500 background-animate delay-1000 h-[100svh] min-h-[100svh] w-full"
+          ></motion.div>
+        </div>
+        <Suspense>
+          <HeroSection dictionary={dictionary} />
+        </Suspense>
+      </motion.div>
+    </div>
   );
 }
